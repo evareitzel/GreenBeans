@@ -1,3 +1,11 @@
+# Green Beans | a Crypto Wallet App
+
+
+
+
+
+
+
 # Project Template: React/Rails API
 
 ## Description
