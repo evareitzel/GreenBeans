@@ -1,6 +1,14 @@
-# Green Beans | a Crypto Wallet App
+# Green Beans | A Crypto Wallet App
 
+# How to Start App
+  $ bundle install
+  $ npm install --prefix client
 
+  # run the Rails API on localhost:3000
+  $ rails s 
+
+  # run the React app on localhost:4000
+  $ npm start --prefix client 
 
 
 
@@ -357,3 +365,4 @@ troubleshoot:
 
 - [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
 - [Render Databases Guide](https://render.com/docs/databases)
+
