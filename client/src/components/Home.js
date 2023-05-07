@@ -5,14 +5,17 @@ import Cryptos from "./Cryptos"
 
 function Home(){
 
-  const [wallets, setWallets] = useState([])
+  const [wallet, setWallet] = useState([])
   const [cryptos, setCryptos] = useState([])
 
   useEffect(() => {
-    fetch("/wallets")
+    fetch("/wallet") // "wallets"
     // .then((r) => console.log(r.json()))
     .then(r => r.json())
-    // .then(setWallets) // (filter & render data for a single user)
+    .then(wallets => {
+      //  filter wallets for current user/wallet
+      // setWallet(wallet)
+    }) // (filter & render data for a single user)
     // .then(r => r.map(x => console.log(x))) ////////
     // .then(console.log(res)); // setWallets 
   }, []);
@@ -24,18 +27,13 @@ function Home(){
     .then(cryptos => setCryptos(cryptos))
   }, [])
 
-  const renderCryptos = cryptos.map(crypto => {
-    console.log(crypto)
-    // <li></li>
-  })
-
   return(
     <div>
-      {renderCryptos}
+      <h2>{wallet.name}'s Cryptos</h2>
       <Wallet />
       {/* {wallets} */}
       <hr className="hr"/>
-      <Cryptos />
+      <Cryptos cryptos={cryptos}/>
     </div>
   )
 }

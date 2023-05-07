@@ -1,19 +1,25 @@
-function Cryptos(){
+function Cryptos({cryptos}){
 
-  // functiion renderCryptos(){}
+  const renderCryptos = cryptos.map(crypto => (
+    // console.log(crypto)
+    <div key={crypto.id}>
+      <h2>{crypto.name}</h2>
+      <h3>{crypto.symbol}</h3>
+      <p>{crypto.price}</p>
+    </div>
+  ))
+
   return(
     <div className="body">
       <h1>Cryptos</h1>
-      <ul>
-        {/* {renderCryptos} */}
-        <li>Crypto 1</li>
-        <li>Crypto 2</li>
-        <li>Crypto 3</li>
-        <li>Crypto 4</li>
-      </ul>
-
+        {renderCryptos}
     </div>
   )
 }
 
 export default Cryptos;
+
+{/* <li></li>
+    <Cryptos
+      cryptos={cryptos}
+    />  */}
