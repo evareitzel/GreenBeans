@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_06_104115) do
+ActiveRecord::Schema.define(version: 2023_05_07_000857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cryptos", force: :cascade do |t|
+    t.string "name"
+    t.string "symbol"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "wallets", force: :cascade do |t|
     t.string "wallet_key"

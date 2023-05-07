@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
+  resources :cryptos, only: :index
   resources :wallets, only: [:index]
+
+  post '/login', to: 'sessions#create'
+  get '/wallet', to: 'wallets#show' # get "/me", to: "users#show"
+  delete '/logout', to: 'sessions#destroy'
+
   # resources :cryptos
   # resources :walletcryptos
   

@@ -17,3 +17,158 @@
   # user4 = User.create(name: 'Katie Haun')
   # user5 = User.create(name: 'Meltem Demirors')
   # user6 = User.create(name: 'Maliha Abidi')
+
+#   { username: 'meltem.demirors' }, 
+#   { username: 'tavonia.evans' }, 
+#   { username: 'katie.haun' }, 
+#   { username: 'balaji.srinivasan' }, 
+#   { username: 'changpeng.zhao' }
+# 
+    # username:, password_digest:
+
+
+
+## App.js
+
+# import logo from './logo.svg';
+# <img src={logo} className="App-logo" alt="logo" />
+
+# import Login from "./Login";
+
+# function App() {
+#   return (
+#     <main>
+#       <h1>
+#         <Link to="/login">Login</Link>
+#       </h1>
+#     </main>
+#   )
+# }
+
+
+# import Login from "./Login";
+
+# function App() {
+#   return (
+#     <main>
+#       <h1>
+#         <Link to="/login">Login</Link>
+#       </h1>
+#     </main>
+#   )
+# }
+
+# export default App;
+
+
+# From index.js
+# // <React.StrictMode>
+# //   <App />
+# // </React.StrictMode>,
+# // document.getElementById('root')
+
+#   // document.getElementById('root')
+# // document.getElementById('root').render(
+
+# // root.render(
+# // <BrowserRouter>
+# //   <App />
+# // </BrowserRouter>
+# // )
+
+
+# From Navbar.js
+
+# import { Link, Route, Switch } from "react-router-dom";
+# // import {Link} from 'react-router-dom' // fix
+
+# {/* // return(
+#   //   <nav className="nav">
+#   //     <h1>Green Beans 🌱</h1> {/* 🌿 */}
+#   //     <ul>
+#   //       <li>
+#   //         <Link to='/'>Wallet</Link>
+#   //         Wallet Link
+#   //       </li>
+#   //       <li>This will be Cryptos link</li>
+#   //     </ul>
+#   //     </nav>
+#   //     // <button onClick={handleLogout}>Logout</button>
+  
+#   // );
+#   // }
+#         // <switch>
+#         //     <route exact path = "/my-wallet">
+#         //       <p>
+#         //         My wallet
+#         //         <Wallet />
+#         //       </p>
+#         //     </route>
+#         //     <route exact path = "/cryptos">
+#         //       <p>
+#         //         Cryptos
+#         //         <Cryptos />
+#         //       </p>
+#         //     </route>
+  
+#             // {/* <route exact path = "/login">
+#             //   <p>
+#             //     Login
+#             //     <Login />
+#             //   </p>
+#             // </route> */}
+  
+#             //   {/* <link>Login</link> */}
+#           // </switch> */}
+  
+# <li>
+# {/* <Link to='/'>Wallet</Link> */}
+# Wallet Link
+# </li>
+# <li>This will be Cryptos link</li>
+
+# {/* 🌿 */}
+
+
+# /* .App-logo {
+#   height: 40vmin;
+#   pointer-events: none;
+# }
+
+# @media (prefers-reduced-motion: no-preference) {
+#   .App-logo {
+#     animation: App-logo-spin infinite 20s linear;
+#   }
+# } */
+
+# /* .App {
+#   text-align: center;
+# } */
+
+# /* .App-header {
+#   background-color: #282c34;
+#   min-height: 100vh;
+#   display: flex;
+#   flex-direction: column;
+#   align-items: center;
+#   justify-content: center;
+#   font-size: calc(10px + 2vmin);
+#   color: white;
+# } */
+
+# /* .App-link {
+#   color: #61dafb;
+# }
+
+# @keyframes App-logo-spin {
+#   from {
+#     transform: rotate(0deg);
+#   }
+#   to {
+#     transform: rotate(360deg);
+#   }
+# } */
+
+
+# /* align-items: center; */
+# /* li */
