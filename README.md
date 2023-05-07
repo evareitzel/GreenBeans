@@ -8,9 +8,21 @@
   $ rails s 
 
   # run the React app on localhost:4000
-  $ npm start --prefix client 
+  $ npm start --prefix client
 
 
+  # Reference
+  
+  ## API
+  CoinCap API 2.0
+  https://docs.coincap.io/ 
+
+  # Design Elements
+
+  ## Color
+  Material Design by Google
+  https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+  Palette: Green 50
 
 
 

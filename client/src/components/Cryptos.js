@@ -1,8 +1,7 @@
 function Cryptos({cryptos}){
 
   const renderCryptos = cryptos.map(crypto => (
-    // console.log(crypto)
-    <div key={crypto.id}>
+    <div key={crypto.id} className="card">
       <h2>{crypto.name}</h2>
       <h3>{crypto.symbol}</h3>
       <p>{crypto.price}</p>
@@ -18,8 +17,3 @@ function Cryptos({cryptos}){
 }
 
 export default Cryptos;
-
-{/* <li></li>
-    <Cryptos
-      cryptos={cryptos}
-    />  */}

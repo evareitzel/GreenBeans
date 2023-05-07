@@ -25,7 +25,7 @@ function Navbar() { // { onLogout }
     <div>
       <Router >
       <nav className="navbar">
-        <Link to='/' className='logo'>Green Beans 🌱</Link>
+        <Link to='/' className='logo'>Green🌱Beans</Link>
         <br />
         <Link to='/wallet' className='nav-link'>Wallet</Link>
         <Link to='/cryptos' className='nav-link'>Cryptos</Link>

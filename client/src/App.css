@@ -1,9 +1,19 @@
+/* #212121 */
+
 .body {
   padding: 40px;
+  /* justify-content: center; */
+  text-align: center;
 }
 
 .button {
   margin: 8px;
+}
+
+.card {
+  border: 1px solid #C8E6C9;
+  border-radius: 16px;
+  margin: 20px;
 }
 
 .hr {
