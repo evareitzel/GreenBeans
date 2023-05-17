@@ -7,6 +7,8 @@ function Wallet({wallet}){
       {/* console.log({wallet}) */}
     </div>
   ))
+
+  // console.log(wallet.first.cryptos)
   
   return(
     <div>

@@ -8,7 +8,7 @@ wallets = Wallet.create([
 
 puts "🪙 Seeding Cryptos..."
 cryptos = Crypto.create([ 
-  {name: 'Bitcoin', symbol: 'BTC', price: '6929.82' }, 
+  {name: 'Bitcoin', symbol: 'BTC', price: '6929.82' }, # add cryptos here?
   {name: 'Ethereum', symbol: 'ETH', price: '404.98' }, 
   {name: 'Komodo', symbol: 'KMD', price: '1.41' }, 
   {name: 'Tether', symbol: 'USDT', price: '1.00' }, 
@@ -20,7 +20,42 @@ cryptos = Crypto.create([
 
 puts "💸 Seeding Walletcryptos..."
 
-Walletcrypto.create(wallet_id: Wallet.first.id, crypto_id: [Crypto.first.id, Crypto.second.id])
+walletcryptos = Walletcrypto.create([
+  {
+    wallet_id: Wallet.first.id, 
+    crypto_id: Crypto.first.id
+    # add second crypto here?
+  }, 
+  {
+    wallet_id: Wallet.first.id, 
+    crypto_id: Crypto.second.id  
+  }, 
+  { 
+    wallet_id: Wallet.second.id, 
+    crypto_id: Crypto.third.id
+  }, 
+  { 
+    wallet_id: Wallet.second.id, 
+    crypto_id: Crypto.fourth.id 
+  }, 
+  { 
+    wallet_id: Wallet.third.id, 
+    crypto_id: Crypto.fifth.id
+  },
+
+  {
+    wallet_id: Wallet.third.id,
+    crypto_id: Crypto.last.id
+  }
+  # , 
+  # { wallet_id: Wallet.fourth.id, crypto_id: Crypto[6].id }, 
+  # { wallet_id: Wallet.fourth.id, crypto_id: Crypto[7].id }
+])
+
+# cryptos: {
+#   crypto_id: Crypto.first.id, crypto_id: Crypto.second.id
+# }
+
 
 # walletcryptos = Walletcrypto.create([
 #   { 
