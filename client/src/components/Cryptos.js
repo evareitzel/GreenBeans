@@ -1,4 +1,4 @@
-function Cryptos({cryptos}){
+export default function Cryptos({cryptos}){
 
   const renderCryptos = cryptos.map(crypto => (
     <div key={crypto.id} className="card">
@@ -9,11 +9,9 @@ function Cryptos({cryptos}){
   ))
 
   return(
-    <div className="body">
+    <div>
       <h1>Cryptos</h1>
         {renderCryptos}
     </div>
   )
 }
-
-export default Cryptos;

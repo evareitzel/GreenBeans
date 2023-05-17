@@ -1,13 +1,17 @@
-function Wallet(){
+function Wallet({wallet}){
 
+  const renderWallets = wallet.map(wal => (
+    <div key={wal.wallet_key}>
+      <p>{wal.wallet_key}</p>
+      {/* show cryptos included in wallet (attn routes/controller) */}
+      {/* console.log({wallet}) */}
+    </div>
+  ))
+  
   return(
-    <div className="body">
+    <div>
       <h1>My Wallet</h1>
-      <ul>
-        <li>Crypto 1 (render your cryptos here)</li>
-        <li>Crypto 2</li>
-        <li>Crypto 3</li>
-      </ul>
+      {renderWallets}
     </div>
   )
 }

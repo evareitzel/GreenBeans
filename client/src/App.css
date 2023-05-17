@@ -2,8 +2,11 @@
 
 .body {
   padding: 40px;
-  /* justify-content: center; */
+  /* display: flex; */
+  justify-content: center;
   text-align: center;
+  width: 414px;
+  margin: auto
 }
 
 .button {
@@ -11,13 +14,17 @@
 }
 
 .card {
-  border: 1px solid #C8E6C9;
+  border: 2px solid #C8E6C9;
   border-radius: 16px;
   margin: 20px;
 }
 
 .hr {
-  margin: 0 40px;
+  width: 380px;
+  /* margin: 0 40px; */
+  align-items: center;
+
+  /* justify-content: center; */
 }
 
 .logo {
@@ -41,7 +48,6 @@
   min-height: 10vh;
   flex-direction: row;
   align-items: center;
-
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }

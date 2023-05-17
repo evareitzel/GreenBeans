@@ -3,21 +3,19 @@ import Wallet from "./Wallet"
 import Cryptos from "./Cryptos"
 
 
-function Home(){
-
+export default function Home(){
   const [wallet, setWallet] = useState([])
   const [cryptos, setCryptos] = useState([])
 
   useEffect(() => {
-    fetch("/wallet") // "wallets"
-    // .then((r) => console.log(r.json()))
+    fetch('/wallets')
     .then(r => r.json())
     .then(wallets => {
       //  filter wallets for current user/wallet
-      // setWallet(wallet)
-    }) // (filter & render data for a single user)
-    // .then(r => r.map(x => console.log(x))) ////////
-    // .then(console.log(res)); // setWallets 
+      // render current wallet
+      setWallet(wallets)
+    })
+    // .then(wallet.map(wallet => console.log(wallet))) //// REF
   }, []);
 
   useEffect(() =>{
@@ -28,14 +26,11 @@ function Home(){
   }, [])
 
   return(
-    <div>
-      <h2>{wallet.name}'s Cryptos</h2>
-      <Wallet />
-      {/* {wallets} */}
-      <hr className="hr"/>
-      <Cryptos cryptos={cryptos}/>
+    <div className="body">
+      {/* <h2>{wallet.wallet_key}'s Cryptos</h2> */}
+      <Wallet wallet={wallet} />
+      <hr className="hr" />
+      <Cryptos cryptos={cryptos} />
     </div>
   )
 }
-
-export default Home;
