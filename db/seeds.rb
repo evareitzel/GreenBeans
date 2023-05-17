@@ -1,4 +1,4 @@
-puts "💸 Seeding Wallets..."
+puts "💰 Seeding Wallets..."
 wallets = Wallet.create([ 
   { wallet_key: '93D7CD8DD467B5A7D7E1AEC91B16D', password_digest: 'iLd%4#)+yA4!Z*q' }, 
   { wallet_key: '8436A6BCFD54F38D8D29AEA9FEA85', password_digest: '>Ux.mx%%psdo9J(' }, 
@@ -19,35 +19,39 @@ cryptos = Crypto.create([
 ])
 
 puts "💸 Seeding Walletcryptos..."
-walletcryptos = Walletcrypto.create([
-  { 
-    wallet_id: Wallet.first.id, 
-    crypto_id: Crypto.first.id 
-  }, 
-  { 
-    wallet_id: Wallet.first.id, 
-    crypto_id: Crypto.second.id 
-  }, 
-  { 
-    wallet_id: Wallet.second.id, 
-    crypto_id: Crypto.third.id
-  }, 
-  { 
-    wallet_id: Wallet.second.id, 
-    crypto_id: Crypto.fourth.id 
-  }, 
-  { 
-    wallet_id: Wallet.third.id, 
-    crypto_id: Crypto.fifth.id
-  },
 
-  {
-    wallet_id: Wallet.third.id,
-    crypto_id: Crypto.sixth.id
-  }
-])
- # , 
-  # { wallet_id: Wallet.fourth.id, crypto_id: Crypto[6].id }, 
-  # { wallet_id: Wallet.fourth.id, crypto_id: Crypto[7].id } 
+Walletcrypto.create(wallet_id: Wallet.first.id, crypto_id: [Crypto.first.id, Crypto.second.id])
+
+# walletcryptos = Walletcrypto.create([
+#   { 
+#     wallet_id: Wallet.first.id, 
+#     crypto_id: Crypto.first.id 
+#   }, 
+#   { 
+#     wallet_id: Wallet.first.id, 
+#     crypto_id: Crypto.second.id 
+#   }, 
+#   { 
+#     wallet_id: Wallet.second.id, 
+#     crypto_id: Crypto.third.id
+#   }, 
+#   { 
+#     wallet_id: Wallet.second.id, 
+#     crypto_id: Crypto.fourth.id 
+#   }, 
+#   { 
+#     wallet_id: Wallet.third.id, 
+#     crypto_id: Crypto.fifth.id
+#   },
+
+#   {
+#     wallet_id: Wallet.third.id,
+#     crypto_id: Crypto.sixth.id
+#   }
+# ]) 
 
 puts "✅ Done seeding!"
+
+ # , 
+  # { wallet_id: Wallet.fourth.id, crypto_id: Crypto[6].id }, 
+  # { wallet_id: Wallet.fourth.id, crypto_id: Crypto[7].id }
