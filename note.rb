@@ -172,3 +172,43 @@
 
 # /* align-items: center; */
 # /* li */
+
+# from Home.js
+
+# const handleLogin = wallet => {
+#   console.log('hi from handleLogin in Home.js!')
+#   console.log(wallet) // logging obj incorrectly
+# }
+
+#Logo (formerly in Navbar)
+# <Link to='/' className='logo'>Green🌱Beans</Link>
+
+
+# From Navbar
+# <nav>
+#       <h1>Green Beans 🌱</h1> {/* 🌿 */}
+#       <ul>
+#         <li>
+#           <Link to='/'>Home</Link>
+#         </li>
+#         <li>
+#           <Link to='/wallet'>Wallet</Link>
+#         </li>
+#         <li>
+#           <Link to='/cryptos'>Cryptos</Link>
+#         </li>
+#       </ul>
+#     </nav>
+
+#   # 2
+#     <nav>
+#     <h1>
+#       <Link to='/'>Green Beans 🌱</Link>
+#     </h1>
+#     <Switch>
+#       <Route exact path='/'><Home /></Route>
+#       <Link to='/wallet'>Wallet</Link>
+#       <Link to='/cryptos'>Cryptos</Link>
+#     </Switch>
+#   </nav>
+

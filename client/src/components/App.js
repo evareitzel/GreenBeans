@@ -1,50 +1,55 @@
-import React from "react"
+import { React, useEffect, useState } from "react"
 import '../App.css';
 
-import Navbar from "./Navbar"
+import Navbar from './Navbar'
+import Login from './Login'
+import Header from './Header'
 
 function App() {
-  return (
-    <main>
-      <Navbar />
-    </main>
-  );
+  const [wallet, setWallet] = useState(null)
+
+  useEffect(() => {
+    fetch('/wallet').then((res) => {
+      if (res.ok) {
+        res.json().then((wallet) => setWallet(wallet))
+      }
+    })
+  }, [])
+
+      // The onLogout callback function would handle removing the information about the wallet from state.
+
+
+  function handleLogout(){
+    setWallet(null)
+    console.log('Hi from handleLogout in Home.js!')
+  }
+
+
+  if (wallet) {
+    return (
+      <main>
+        <Header />
+        <Navbar />
+        <div  className="body">
+           {/* , Wallet {wallet.wallet_key} */}
+        </div>
+      </main>
+    )
+  } else {
+    return (
+      <main>
+        <Header />
+        {/* <Navbar onLogout={handleLogout} />  */}
+        {/* take homepage out of Navbar */}
+        <div  className="body">
+          <Login onLogin={setWallet} />
+          </div>
+      </main>
+    )
+  }
 }
 
-export default App;
-
-
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
-
-
-// import { useEffect } from 'react';
-// import '../App.css';
-// import {
-//   Routes, // instead of "Switch"  
-//   Route
-// } from 'react-router-dom'
-// import '../stylesheets/App.css'
-
-
-// import Wallet from "./Wallet"
-// import Cryptos from "./Cryptos"
-// import Login from "./Login"
-
-
-  // const [wallet, setWallet] = useState(null);
-
-  // useEffect(() => {
-  //   fetch("/wallet").then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((wallet) => setWallet(wallet));
-  //     }
-  //   });
-  // }, []);
+export default App
 
   // if (wallet) {
   //   return <h2>Welcome, Wallet number {wallet.walletKey}!</h2>;
@@ -52,13 +57,19 @@ export default App;
   //   return <Login onLogin={setWallet} />;
   // }
 
-
-// function handleLogout(){
-  // handle onLogout prop
-  // onLogout = handleLogout
-// }
-
 // <div className="App">
 // </div>
 
 
+/////////////////////////////
+
+// return (
+//   <main>
+//     <Navbar onLogout={logoutWallet} />
+//     if (wallet) {
+//     <h2>Welcome!</h2>
+//     } else {
+//       <Login onLogin={setWallet} />
+//     }
+//   </main>
+// )
