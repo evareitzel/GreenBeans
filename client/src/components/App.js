@@ -3,7 +3,6 @@ import '../App.css';
 
 import Navbar from './Navbar'
 import Login from './Login'
-import Header from './Header'
 
 function App() {
   const [wallet, setWallet] = useState(null)
@@ -26,24 +25,20 @@ function App() {
   if (wallet) {
     return (
       <main>
-        <Header />
-        <Navbar />
+        <Navbar wallet={wallet}/>
         <div  className="body">
            {/* , Wallet {wallet.wallet_key} */}
         </div>
-        {/* <footer>&copy; 2023 Green Beans Inc.</footer> */}
       </main>
     )
   } else {
     return (
       <main>
-        <Header />
         <Navbar onLogout={handleLogout} /> 
+        {/* pass wallet state as a prop? */}
         <div  className="body">
           <Login onLogin={setWallet} />
         </div>
-        {/* <footer>&copy; 2023 Green Beans Inc.</footer> */}
-
       </main>
     )
   }
@@ -73,3 +68,8 @@ export default App
 //     }
 //   </main>
 // )
+
+
+// {/* <h1 className='logo'>Green🌱Beans</h1> */}
+
+//  <Link to='/' className='logo'>Green🌱Beans</Link>
