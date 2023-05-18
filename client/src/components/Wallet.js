@@ -1,20 +1,26 @@
 function Wallet({wallet}){
 
-  // console.log(wallet.first.cryptos)
-
   const renderWallets = wallet.map(wal => (
     <div key={wal.wallet_key}>
+        {console.log("from renderWallets: ")}
+        {console.log(wal.cryptos)}
       <h3>{wal.wallet_key}</h3>
-      
-      {console.log("from renderWallets: ")}
-      {console.log(wal.cryptos)}
-      {/* {console.log(`from renderWallets: ${wal.cryptos}`)} */}
-
       <p>{wal.cryptos.first}</p>
-       {/* show cryptos included in wallet (attn routes/controller) */}
-       {/* console.log({wal.cryptos}) */}
     </div>
   ))
+  
+  return(
+    <div>
+      <h1>My Wallet</h1>
+      {renderWallets}
+    </div>
+  )
+}
+
+export default Wallet;
+
+
+
 
   // const c1 = wallet.first.cryptos
   // const renderCryptos = c1.map(crypto =>(
@@ -22,15 +28,4 @@ function Wallet({wallet}){
   //   <p>{crypto}</p>
   // ))
 
-
-  
-  return(
-    <div>
-      <h1>My Wallet</h1>
-      {renderWallets}
-      {/* {renderCryptos} */}
-    </div>
-  )
-}
-
-export default Wallet;
+  // {/* {renderCryptos} */}
