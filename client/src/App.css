@@ -48,3 +48,9 @@
   color: #388E3C;
   letter-spacing: 1px;
 }
+
+.wrapper {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 16px;
+}

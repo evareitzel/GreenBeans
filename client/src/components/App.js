@@ -1,75 +1,32 @@
-import { React, useEffect, useState } from "react"
-import '../App.css';
+import React, { useEffect, useState } from "react"
 
-import Navbar from './Navbar'
-import Login from './Login'
+import NavBar from "./NavBar"
+import Login from "../pages/Login"
+// import Wallet from "../pages/Wallet"
+// import Cryptos from "../pages/Cryptos"
 
 function App() {
   const [wallet, setWallet] = useState(null)
 
   useEffect(() => {
-    fetch('/wallet').then((res) => {
-      if (res.ok) {
-        res.json().then((wallet) => setWallet(wallet))
+    // auto-login
+    fetch('/wallet').then(r => {
+      if (r.ok) {
+        r.json().then((wallet) => setWallet(wallet))
       }
     })
   }, [])
 
-  // The onLogout callback function would handle removing the information about the wallet from state.
-  function handleLogout(){
-    setWallet(null)
-    console.log('Hi from handleLogout in Home.js!')
-  }
+  if (!wallet) return <Login onLogin={setWallet} />
 
-
-  if (wallet) {
-    return (
-      <main className="app">
-        <Navbar wallet={wallet}/>
-        <div  className="body">
-           {/* , Wallet {wallet.wallet_key} */}
-        </div>
+  return (
+    <>
+      <NavBar wallet={wallet} setWallet={setWallet} />
+      <main>
+        <p>Hi from App.js!</p>
       </main>
-    )
-  } else {
-    return (
-      <main className="app">
-        <Navbar onLogout={handleLogout} /> 
-        {/* pass wallet state as a prop? */}
-        {/* <div  className="body">
-          <Login onLogin={setWallet} />
-        </div> */}
-      </main>
-    )
-  }
+    </>
+  );
 }
 
 export default App
-
-  // if (wallet) {
-  //   return <h2>Welcome, Wallet number {wallet.walletKey}!</h2>;
-  // } else {
-  //   return <Login onLogin={setWallet} />;
-  // }
-
-// <div className="App">
-// </div>
-
-
-/////////////////////////////
-
-// return (
-//   <main>
-//     <Navbar onLogout={logoutWallet} />
-//     if (wallet) {
-//     <h2>Welcome!</h2>
-//     } else {
-//       <Login onLogin={setWallet} />
-//     }
-//   </main>
-// )
-
-
-// {/* <h1 className='logo'>Green🌱Beans</h1> */}
-
-//  <Link to='/' className='logo'>Green🌱Beans</Link>

@@ -11,6 +11,8 @@ export default function Cryptos({cryptos}){
   return(
     <div>
       <h1>Cryptos</h1>
+      <p>Render cryptos here</p>
+
         {/* {renderCryptos} */}
     </div>
   )

@@ -262,3 +262,76 @@
 
 # //   </div>
 # // );
+
+
+# from App.js
+# // if (wallet) {
+#   //   return <h2>Welcome, Wallet number {wallet.walletKey}!</h2>;
+#   // } else {
+#   //   return <Login onLogin={setWallet} />;
+#   // }
+
+# // <div className="App">
+# // </div>
+
+
+# /////////////////////////////
+
+# // return (
+# //   <main>
+# //     <Navbar onLogout={logoutWallet} />
+# //     if (wallet) {
+# //     <h2>Welcome!</h2>
+# //     } else {
+# //       <Login onLogin={setWallet} />
+# //     }
+# //   </main>
+# // )
+
+
+# // {/* <h1 className='logo'>Green🌱Beans</h1> */}
+
+# //  <Link to='/' className='logo'>Green🌱Beans</Link>
+
+
+
+
+
+# from wallets_controller.rb
+  # GET /wallet
+  def show
+    wallet = Wallet.find_by(wallet_key: session[:wallet]) # ?
+    if wallet
+      render json: wallet, include: :cryptos
+    else
+      render json: { errors: ['Not authorized'] }, status: :unauthorized
+    end
+  end
+
+
+  # from wallets_controller
+
+  #   # GET /wallets/:id # make /wallet (singular)
+#   def show
+#     wallet = Wallet.find(params[:id])
+#     # wallet = Wallet.find(id: session[:wallet_key]) # find_by
+#     # if wallet # refactor w rescue_from (in app_controller?)
+#       render json: wallet#, include: :cryptos
+#     # else
+#     #   render json: { errors: ["Not authorized"] }, status: :unauthorized
+#     # end
+#   end
+
+# end
+
+
+# # GET /wallets/:id
+  # def show
+  #   wallet = Wallet.find_by(id: session[:wallet_key])
+  #   if wallet # refactor w rescue_from (in app_controller?)
+  #     render json: wallet, include: :cryptos
+  #   else
+  #     render json: { errors: ["Not authorized"] }, status: :unauthorized
+  #   end
+  # end
+

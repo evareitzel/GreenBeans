@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react"
 import Wallet from './Wallet'
 import Cryptos from './Cryptos'
-// import Login from './Login'
+import Login from './Login'
+// import Logout from './Logout'
 
-
-export default function Home(){
+export default function Dashboard(){
   const [wallet, setWallet] = useState([])
   const [cryptos, setCryptos] = useState([])
 
@@ -29,20 +29,11 @@ export default function Home(){
     .then(cryptos => setCryptos(cryptos))
   }, [])
 
-  function handleLogin(wallet){
-    // save the logged in user's details in state!
-    // ? wasn't it already saved to state w setWalletKey in Login.js?
-    console.log('hi from handleLogin in Home.js!')
-    console.log(wallet)
-  }
-
   return(
     <div className="body">
-      {/* <h2>{wallet.wallet_key}'s Cryptos</h2> */}
       <Wallet wallet={wallet} />
       <hr className="hr" />
       <Cryptos cryptos={cryptos} />
-      {/* <Login onLogin={handleLogin} /> */}
     </div>
   )
 }

@@ -1,5 +1,7 @@
 function Wallet({wallet}){
 
+  console.log(wallet)
+  
   // const renderWallets = wallet.map(wal => (
   //   <div key={wal.wallet_key}>
   //       {console.log(wal.cryptos)}
@@ -10,6 +12,11 @@ function Wallet({wallet}){
   return(
     <div>
       <h1>My Wallet</h1>
+      <p>Render walletcryptos here (READ)</p>
+      <p>Add walletcrypto (CREATE/POST)</p>
+      <p>Increase/decrease walletcryptos (UPDATE/PATCH)</p>
+      <p>Delete walletcrypto (DESTROY/DELETE)</p>
+
       {/* {renderWallets} */}
     </div>
   )

@@ -1,18 +1,18 @@
 import {useState} from "react"
 
-function Login({ onLogin, onLogout }) {
+function Login({ onLogin }) { // , onLogout
   const [walletKey, setWalletKey] = useState("") // 1/2 show ID at door (walletKey)
 
-  function handleLogout() { // figure out placement in component structure
-    fetch('/logout', {
-      method: 'DELETE',
-    }).then(() => onLogout())
-  }
+  // function handleLogout() { // figure out placement in component structure
+  //   fetch('/logout', {
+  //     method: 'DELETE',
+  //   }).then(() => onLogout())
+  // }
 
   
   function handleSubmit(e) {
     e.preventDefault()
-    fetch('/login', { // error: onLogin is not a function
+    fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,12 +20,14 @@ function Login({ onLogin, onLogout }) {
       body: JSON.stringify({ walletKey }),
     })
      .then((r) => r.json())
-     .then((wallet) => onLogin(wallet)) // resolve callback func (in Navbar.js)
+     .then((wallet) => onLogin(wallet)) // resolve callback func
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Login</h1>
+      <p>Implement Login/Logout flow and authentications</p>
+      <p>Get wallet_key and password digest</p>
       <input
         type='text'
         value={walletKey}
