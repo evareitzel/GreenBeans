@@ -4,7 +4,7 @@ class WalletsController < ApplicationController
 
   # GET /wallets
   def index
-    render json: Wallet.all
+    render json: Wallet.all, include: :cryptos
   end
 
   # Not wkg
