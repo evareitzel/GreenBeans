@@ -12,7 +12,7 @@ class WalletsController < ApplicationController
   # GET /wallets/:id # make /wallet (singular)
   def show
     wallet = Wallet.find(params[:id])
-    render json: wallet
+    render json: wallet, include: :cryptos
   end
 
 end
