@@ -8,7 +8,6 @@ class WalletsController < ApplicationController
   end
 
   # Not wkg
-
   # GET /wallets/:id # make /wallet (singular)
   def show
     wallet = Wallet.find(params[:id])

@@ -14,7 +14,7 @@ export default function Home(){
       //  filter wallets for current user/wallet
       // render current wallet
       setWallet(wallets)
-      console.log(wallets)
+      // console.log(wallets)
     })
     // .then(wallet.map(wallet => console.log(wallet))) //// REF
     // .then(r => console.log(r))
