@@ -36,9 +36,10 @@ function Navbar({ onLogout }) {
           <Route path='/login' element={<Login />} /> 
           {/* <Route path='*' element={<Error />} />  */}
         </Routes>
+        {/* <footer>&copy; 2023</footer> */}
       </Router>
 
-  {/* Why is this at the bottom? */}
+      {/* Why is Logout btn at bottom? */}
       <button onClick={handleLogout}>Logout</button>
 
     </div>

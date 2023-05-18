@@ -212,3 +212,5 @@
 #     </Switch>
 #   </nav>
 
+
+# <footer>&copy; 2023 Green Beans Inc.</footer>

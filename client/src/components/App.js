@@ -16,9 +16,7 @@ function App() {
     })
   }, [])
 
-      // The onLogout callback function would handle removing the information about the wallet from state.
-
-
+  // The onLogout callback function would handle removing the information about the wallet from state.
   function handleLogout(){
     setWallet(null)
     console.log('Hi from handleLogout in Home.js!')
@@ -33,17 +31,19 @@ function App() {
         <div  className="body">
            {/* , Wallet {wallet.wallet_key} */}
         </div>
+        {/* <footer>&copy; 2023 Green Beans Inc.</footer> */}
       </main>
     )
   } else {
     return (
       <main>
         <Header />
-        {/* <Navbar onLogout={handleLogout} />  */}
-        {/* take homepage out of Navbar */}
+        <Navbar onLogout={handleLogout} /> 
         <div  className="body">
           <Login onLogin={setWallet} />
-          </div>
+        </div>
+        {/* <footer>&copy; 2023 Green Beans Inc.</footer> */}
+
       </main>
     )
   }
