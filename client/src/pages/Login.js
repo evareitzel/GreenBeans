@@ -9,7 +9,7 @@ function Login({ onLogin }) {
 
   return (
     <div className='wrapper'>
-      <h1>Green 🌱 Beans</h1>
+      <h1 className='logo'>Green 🌱 Beans</h1>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
