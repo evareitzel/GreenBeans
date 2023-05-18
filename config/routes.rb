@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :walletcryptos, only: :index
   resources :cryptos, only: :index
-  resources :wallets, only: [:index]
+  resources :wallets, only: [:index, :show]
 
   post '/login', to: 'sessions#create'
   get '/wallet', to: 'wallets#show' # get "/me", to: "users#show"
