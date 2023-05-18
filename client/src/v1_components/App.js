@@ -40,7 +40,7 @@ function App() {
   } else {
     return (
       <main className="app">
-        <Navbar onLogout={handleLogout} />
+        {/* <Navbar onLogout={handleLogout} /> */}
         <Login onLogin={handleLogin} /> 
       </main>
     )

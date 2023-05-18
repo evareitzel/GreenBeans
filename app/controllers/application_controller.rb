@@ -9,10 +9,12 @@ class ApplicationController < ActionController::API
 
   def authorize
     @current_wallet = Wallet.find_by(wallet_key: session[:wallet_key])
+
+    render json: { errors: ['Not authorized'] }, status: :unauthorized unless @current_wallet
   end
 
-  def render_unprocessable_entity_response(invalid)
-    render json: {errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+  def render_unprocessable_entity_response(exception)
+    render json: {errors: exception.record.errors.full_messages }, status: :unprocessable_entity
   end
 
 end

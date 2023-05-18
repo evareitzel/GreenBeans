@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function CreateAccountForm({ onLogin }) {
-  const [wallet, setWallet] = useState('')
+  const [walletKey, setWalletKey] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
   // const [errors, setErrors] = useState([])
@@ -20,7 +20,7 @@ function CreateAccountForm({ onLogin }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        wallet,
+        walletKey,
         password,
         // password_confirmation: passwordConfirmation,
       }),
@@ -28,7 +28,7 @@ function CreateAccountForm({ onLogin }) {
       // setIsLoading(false)
       if(r.ok) {
         r.json().then(wallet => onLogin(wallet))
-            console.log(wallet)
+            // console.log(walletKey)
       } else {
         console.log('Errors!')
         // r.json().then(err => setErrors(err.errors))
@@ -44,8 +44,8 @@ function CreateAccountForm({ onLogin }) {
           type='text'
           id='wallet_key' // 'wallet'?
           autoComplete='off'
-          value={wallet} // wallet_key?
-          onChange={e => setWallet(e.target.value)}
+          value={walletKey} // wallet?
+          onChange={e => setWalletKey(e.target.value)}
         />
       </div>
       <div>
