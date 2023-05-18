@@ -42,7 +42,6 @@ export default function Home(){
       <Wallet wallet={wallet} />
       <hr className="hr" />
       <Cryptos cryptos={cryptos} />
-      {/* <hr className="hr" /> */}
       {/* <Login onLogin={handleLogin} /> */}
     </div>
   )

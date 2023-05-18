@@ -1,15 +1,6 @@
 /* #212121 */
-.app {  
-  /* width: 500px;
-  border: solid blue 3px; */
-
-}
-
-.body {
-  border: solid green 3px;
-
-  padding: 40px;
-  /* display: flex; */
+.app {
+  padding-top: 12px;
   justify-content: center;
   text-align: center;
   width: 500px;
@@ -31,50 +22,24 @@
   align-items: center;
 }
 
+.header {
+  width: 500px;
+}
+
 .logo {
   text-transform: uppercase;
   font-weight: 700;
   text-decoration: none;
   color: #4CAF50;
-  letter-spacing: 1px;
-  padding: 0 20px 0 0;
-
-
-
-
-
-  /* font-weight: 700;
-  text-transform: uppercase;
-  padding-top: 30px;
-  letter-spacing: 6px;
-  color: #4CAF50;
-  font-size: 22px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  letter-spacing: 2px;
+  font-size: 24px;
   justify-content: center;
-
-  text-decoration: none;
-  padding: 24px;
-  color: #388E3C;
-  letter-spacing: 1px; */
 }
 
 .navbar {
-  border: solid red 3px;
-  display: flex;
   list-style: none;
-  padding: 0px 40px 20px 40px;
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
   min-height: 10vh;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  /* font-size: calc(8px + 2vmin); */
+  font-size: calc(10px + 2vmin);
 }
 
 .nav-link {

@@ -214,3 +214,51 @@
 
 
 # <footer>&copy; 2023 Green Beans Inc.</footer>
+
+
+# from Navbar
+#  <button onClick={handleLogout}>Logout (not a toggle)</button>
+
+#  <button>{wallet == null ? "Login (toggle - build functionality)" : "Logout (toggle - build functionality)"}</button>
+
+
+####### from Navbar cleanup
+
+# {/* Why is Logout btn at bottom? */}
+# {/* <button onClick={handleLogout}>Logout (not a toggle)</button> */}
+
+# {/* <button>{wallet == null ? "Login (toggle - build functionality)" : "Logout (toggle - build functionality)"}</button> */}
+
+# {/* toggle - make functional */}
+
+
+# // onClick={onLoginLogoutClick} 
+
+
+# // return(
+# //   <div>
+# //     <h1 className='logo'>Green 🌱 Beans</h1>
+# //     <Router>
+# //       <nav className="navbar">
+# //         {/* make Wallets singular */}
+# //         <Link to='/wallet' className='nav-link'>Wallet</Link> 
+# //         <Link to='/cryptos' className='nav-link'>Cryptos</Link>
+# //         {/* login/logout here? */}
+# //         <Link to='/login' className='nav-link'>Login</Link>
+# //       </nav>
+
+# //       <Routes>
+# //         <Route path='/' element={<Home />} /> {/* remove */}
+# //         <Route path='/wallet' element={<Wallet />} /> {/* Make wallet home ( '/' ) */}
+# //         <Route path='/cryptos' element={<Cryptos />} />
+# //         {/* make Login/Logout toggle */}
+# //         <Route path='/login' element={<Login />} /> 
+# //         {/* <Route path='*' element={<Error />} />  */}
+# //       </Routes>
+# //     </Router>
+
+# //     {/* Why is Logout btn at bottom? */}
+# //     <button onClick={handleLogout}>Logout</button>
+
+# //   </div>
+# // );

@@ -18,12 +18,13 @@ function Login({ onLogin }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1>Login</h1>
       <input
         type='text'
         value={walletKey}
         onChange={(e) => setWalletKey(e.target.value)}
       />
-      <button type='submit'>Login</button> {/* className='button' */}
+      <button type='submit'>Login</button>
     </form>
   );
 }

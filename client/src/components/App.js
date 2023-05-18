@@ -36,9 +36,9 @@ function App() {
       <main className="app">
         <Navbar onLogout={handleLogout} /> 
         {/* pass wallet state as a prop? */}
-        <div  className="body">
+        {/* <div  className="body">
           <Login onLogin={setWallet} />
-        </div>
+        </div> */}
       </main>
     )
   }
