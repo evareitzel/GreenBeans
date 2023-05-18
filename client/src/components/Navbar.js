@@ -16,14 +16,18 @@ function Navbar({ onLogout, wallet }) {
 
   return(
     <div>
-      <h1 className='logo'>Green 🌱 Beans</h1>
       <Router>
         <nav className="navbar">
           {/* make Wallets singular */}
+          <Link to='/' className='logo'>Green 🌱 Beans </Link>
+
           <Link to='/wallet' className='nav-link'>Wallet</Link> 
           <Link to='/cryptos' className='nav-link'>Cryptos</Link>
           {/* login/logout here? */}
           <Link to='/login' className='nav-link'>Login</Link>
+          {/* <button onClick={handleLogout}>Logout (not a toggle)</button>
+
+          <button>{wallet == null ? "Login (toggle - build functionality)" : "Logout (toggle - build functionality)"}</button> */}
 
         </nav>
 
@@ -37,9 +41,10 @@ function Navbar({ onLogout, wallet }) {
       </Router>
 
       {/* Why is Logout btn at bottom? */}
-      <button onClick={handleLogout}>Logout (not a toggle)</button>
+      {/* <button onClick={handleLogout}>Logout (not a toggle)</button> */}
 
-      <button>{wallet == null ? "Login (toggle - build functionality)" : "Logout (toggle - build functionality)"}</button>
+      {/* <button>{wallet == null ? "Login (toggle - build functionality)" : "Logout (toggle - build functionality)"}</button> */}
+
       {/* toggle - make functional */}
 
     </div>

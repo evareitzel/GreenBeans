@@ -24,7 +24,7 @@ function App() {
 
   if (wallet) {
     return (
-      <main>
+      <main className="app">
         <Navbar wallet={wallet}/>
         <div  className="body">
            {/* , Wallet {wallet.wallet_key} */}
@@ -33,7 +33,7 @@ function App() {
     )
   } else {
     return (
-      <main>
+      <main className="app">
         <Navbar onLogout={handleLogout} /> 
         {/* pass wallet state as a prop? */}
         <div  className="body">
