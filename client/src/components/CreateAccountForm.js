@@ -4,17 +4,16 @@ function CreateAccountForm({ onLogin }) {
   const [wallet, setWallet] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
-  const [errors, setErrors] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  // const [errors, setErrors] = useState([])
+  // const [isLoading, setIsLoading] = useState(false)
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(wallet)
-    console.log(password)
-    console.log(passwordConfirmation)
-    setErrors([])
-    setIsLoading(true)
-    // setup route
+    // console.log(wallet)
+    // console.log(password)
+    // console.log(passwordConfirmation)
+    // setErrors([])
+    // setIsLoading(true)
     fetch('/create-account', {
       method: 'POST',
       headers: {
@@ -23,14 +22,16 @@ function CreateAccountForm({ onLogin }) {
       body: JSON.stringify({
         wallet,
         password,
-        password_confirmation: passwordConfirmation,
+        // password_confirmation: passwordConfirmation,
       }),
     }).then(r => {
-      setIsLoading(false)
+      // setIsLoading(false)
       if(r.ok) {
-        r.json().then(user => onLogin(user))
+        r.json().then(wallet => onLogin(wallet))
+            console.log(wallet)
       } else {
-        r.json().then(err => setErrors(err.errors))
+        console.log('Errors!')
+        // r.json().then(err => setErrors(err.errors))
       }
     })
   }
@@ -67,19 +68,16 @@ function CreateAccountForm({ onLogin }) {
           autoComplete='current-password'
         />
       </div>
-
-      {/* <button type='submit'>Create 
-      Account</button> */}
-      <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>
-
-      {/*  */}
-
-      {/* Where are errors coming from in backend? */}
-      {errors.map(err => (
-        <p key={err}>{err}</p>
-      ))}
+      <button type='submit'>Create Account</button>
+      {/* {errors.map(err => (
+        <p key={err}>! {err}</p>
+      ))} */}
     </form>
   )
 }
 
+// errors are undefined (empty arr)
+
 export default CreateAccountForm
+
+      // <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>

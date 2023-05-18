@@ -4,4 +4,7 @@ class Wallet < ApplicationRecord
   # has_secure_password # bcrypt gem
   
   # validates wallet_key, presence: true, is_unique
+
+  # write model validations (key & pw - present; pw === pw_conf, length(key), greater_than/less_than - pw)
+
 end

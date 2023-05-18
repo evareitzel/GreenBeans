@@ -1,21 +1,24 @@
 class SessionsController < ApplicationController
 
-  # FIX ********************
+  skip_before_action :authorize, only: :create
+  
   # POST /login
   def create
     wallet = Wallet.find_by(wallet_key: params[:wallet_key])
-    session[:key] = wallet.wallet_key # fix syntax / names
-    # 2/2 - get wristband (session[:key])
-    # :wallet_key # error: NoMethodError (undefined method wallet_key)
-    render json: wallet
+
+    if wallet&.authenticate(params[:password])
+      session[:wallet_key] = wallet.wallet_key # fix syntax / names
+    # 2/2 - get wristband
+      render json: wallet
+    else
+      render json: { errors: ['Invalid username or password'] }, status: :unauthorized
+    end
   end
 
   # DELETE /logout
   def destroy
-    session.delete :key
+    session.delete :wallet_key
     head :no_content
   end
 
-  # private
-  # wallet_params - params.permit()
 end
