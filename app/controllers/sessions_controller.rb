@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   
   # POST /login
   def create
-    wallet = Wallet.find_by(wallet_key: params[:wallet_key]) # :walletKey or :wallet_key ?
+    wallet = Wallet.find_by(wallet_key: params[:wallet_key])
     if wallet&.authenticate(params[:password])
-      session[:wallet_key] = wallet.wallet_key # 2/2 - get wristband
+      session[:wallet_key] = wallet.wallet_key # 2/2 - get wristband # WKG?
       render json: wallet
     else
       render json: { errors: ['Invalid username or password'] }, status: :unauthorized
