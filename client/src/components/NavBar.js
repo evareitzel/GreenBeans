@@ -11,13 +11,15 @@ function NavBar({setWalletKey}) {
   }
 
   return(
-    <nav className="navbar">
-      <Link to='/' className='logo'>Green 🌱 Beans</Link>
-      <Link to='/cryptos' className='nav-link'>Cryptos</Link>
-      <button onClick={handleLogoutClick}>
-        Logout
-      </button>
-    </nav>
+    <>
+      <nav className="navbar">
+        <Link to='/' className='logo'>Green 🌱 Beans</Link>
+        <Link to='/cryptos' className='nav-link'>Cryptos</Link>
+        <button onClick={handleLogoutClick}>
+          Logout
+        </button>
+      </nav>
+    </>
   )
 }
 

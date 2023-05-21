@@ -11,7 +11,8 @@ function CreateAccountForm({ onLogin }) {
     e.preventDefault()
     // console.log(wallet)
     // console.log(password)
-    // console.log(passwordConfirmation)
+    // console.log(passwordConfirmation
+
     // setErrors([])
     // setIsLoading(true)
     fetch('/create-account', {
@@ -28,7 +29,7 @@ function CreateAccountForm({ onLogin }) {
       // setIsLoading(false)
       if(r.ok) {
         r.json().then(wallet => onLogin(wallet))
-            // console.log(walletKey)
+        // console.log(walletKey)
       } else {
         console.log('Errors!')
         // r.json().then(err => setErrors(err.errors))
@@ -77,7 +78,6 @@ function CreateAccountForm({ onLogin }) {
 }
 
 // errors are undefined (empty arr)
-
 export default CreateAccountForm
 
 // <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>
