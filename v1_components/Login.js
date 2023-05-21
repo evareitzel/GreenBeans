@@ -1,7 +1,7 @@
 import {useState} from "react"
 
 function Login({ onLogin }) { // , onLogout
-  const [walletKey, setWalletKey] = useState("") // 1/2 show ID at door (walletKey)
+  const [walletKey, setWalletKey] = useState("") // 1/2 show ID at door
 
   // function handleLogout() { // figure out placement in component structure
   //   fetch('/logout', {

@@ -335,3 +335,23 @@
   #   end
   # end
 
+
+  # Alt router setup from index.js
+#   import {BrowserRouter} from 'react-router-dom'
+
+# ReactDOM.render(
+#   <BrowserRouter>
+#     <App />
+#   </BrowserRouter>,
+
+
+
+
+# from App.js
+# <Route path='/' element={<Component />} />
+
+# from NavBar.js
+# <Link to='/'>
+# <h1 className='logo'>Green 🌱 Beans</h1>
+# </Link>
+

@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "react-hook-form": "^7.43.9",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.2"
   }
 }

@@ -22,7 +22,7 @@ function CreateAccountForm({ onLogin }) {
       body: JSON.stringify({
         walletKey,
         password,
-        // password_confirmation: passwordConfirmation,
+        password_confirmation: passwordConfirmation,
       }),
     }).then(r => {
       // setIsLoading(false)
@@ -80,4 +80,4 @@ function CreateAccountForm({ onLogin }) {
 
 export default CreateAccountForm
 
-      // <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>
+// <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>

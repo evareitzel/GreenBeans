@@ -4,7 +4,7 @@ class WalletsController < ApplicationController
   # POST '/create-account'
   def create
     wallet = Wallet.create!(wallet_params)
-    session[:wallet_key] = wallet.wallet_key
+    session[:wallet_key] = wallet.wallet_key # walletKey
     render json: wallet, status: :created
   end
 
@@ -16,7 +16,7 @@ class WalletsController < ApplicationController
   private
 
   def wallet_params
-    params.permit(:wallet_key, :password, :password_confirmation)
+    params.permit(:walletKey, :password, :password_confirmation) # :wallet_key
   end
 
 end
@@ -33,10 +33,10 @@ end
 #   render json: Wallet.all, include: :cryptos
 # end
 
-# GET /wallet
-def show
-  # wallet = Wallet.find_by(wallet_key: session[:wallet_key]) # ?
-  # render json: wallet, include: :cryptos
-  render json: @current_wallet, include: :cryptos #
-end
+# # GET /wallet
+# def show
+#   # wallet = Wallet.find_by(wallet_key: session[:wallet_key]) # ?
+#   # render json: wallet, include: :cryptos
+#   render json: @current_wallet, include: :cryptos #
+# end
 # render json: { errors: ['Not authorized'] }, status: :unauthorized
