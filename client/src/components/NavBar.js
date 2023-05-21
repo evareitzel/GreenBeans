@@ -15,7 +15,7 @@ function NavBar({setWalletKey}) {
       <nav className="navbar">
         <Link to='/' className='logo'>Green 🌱 Beans</Link>
         <Link to='/cryptos' className='nav-link'>Cryptos</Link>
-        <button onClick={handleLogoutClick}>
+        <button onClick={handleLogoutClick} className='ghost-button'>
           Logout
         </button>
       </nav>

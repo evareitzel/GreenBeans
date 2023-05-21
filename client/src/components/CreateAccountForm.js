@@ -25,7 +25,7 @@ function CreateAccountForm({ onLogin }) {
     }).then(r => {
       // setIsLoading(false)
       if(r.ok) {
-        r.json().then(wallet => onLogin(wallet))
+        r.json().then(walletKey => onLogin(walletKey))
       } else {
         // console.log('Errors!')
         r.json().then(err => setErrors(err.errors))
@@ -42,7 +42,7 @@ function CreateAccountForm({ onLogin }) {
           type='text'
           id='wallet_key' // 'wallet'?
           autoComplete='off'
-          value={walletKey} // wallet?
+          value={walletKey} // wallet_key?
           onChange={e => setWalletKey(e.target.value)}
         />
       </div>

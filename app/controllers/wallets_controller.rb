@@ -1,10 +1,18 @@
 class WalletsController < ApplicationController
   skip_before_action :authorize, only: :create
 
-  # POST '/create-account'
+  # Development only ############
+  # # GET /wallets
+  # def index
+  #   render json: Wallet.all, include: :cryptos
+  # end
+
+
+  # POST '/wallets' 
+  # '/create-account'
   def create
     wallet = Wallet.create!(wallet_params)
-    session[:wallet_key] = wallet.wallet_key # walletKey
+    session[:wallet_key] = wallet.wallet_key #
     render json: wallet, status: :created
   end
 
@@ -16,7 +24,8 @@ class WalletsController < ApplicationController
   private
 
   def wallet_params
-    params.permit(:walletKey, :password, :password_confirmation) # :wallet_key
+    params.permit(:wallet_key, :password) #
+    # :password_confirmation
   end
 
 end
