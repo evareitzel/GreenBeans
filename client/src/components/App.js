@@ -8,9 +8,6 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
 
-  console.log('walletKey from App.js: ')
-  console.log(walletKey)
-
   useEffect(() => {
     // auto-login
     fetch('/wallet').then(r => {
@@ -29,7 +26,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Wallet />} walletKey={walletKey} />
           <Route path='/cryptos' element={<Cryptos />} />
-          {/* Redirect  */}
+          {/* Redirect - but is this redundant bc of the backend controller save? */}
           <Route path='*' element={<Wallet />} />
         </Routes>
       </Router>

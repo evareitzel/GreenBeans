@@ -5,13 +5,10 @@ function CreateAccountForm({ onLogin }) {
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
   const [errors, setErrors] = useState([])
-  // const [isLoading, setIsLoading] = useState(false)
 
   function handleSubmit(e) {
     e.preventDefault()
-
     setErrors([])
-    // setIsLoading(true)
     fetch('/create-account', {
       method: 'POST',
       headers: {
@@ -23,11 +20,9 @@ function CreateAccountForm({ onLogin }) {
         password_confirmation: passwordConfirmation,
       }),
     }).then(r => {
-      // setIsLoading(false)
       if(r.ok) {
         r.json().then(walletKey => onLogin(walletKey))
       } else {
-        // console.log('Errors!')
         r.json().then(err => setErrors(err.errors))
       }
     })
@@ -40,9 +35,9 @@ function CreateAccountForm({ onLogin }) {
         <input 
           className="form-input"
           type='text'
-          id='wallet_key' // 'wallet'?
+          id='wallet_key'
           autoComplete='off'
-          value={walletKey} // wallet_key?
+          value={walletKey}
           onChange={e => setWalletKey(e.target.value)}
         />
       </div>
@@ -71,7 +66,6 @@ function CreateAccountForm({ onLogin }) {
       <div className='button-wrapper'>
         <button type='submit' className='button'>Create Account</button> 
       </div>
-      {/* throwing a TypeError: Cannot read properties of undefined (reading 'map') */}
       {errors.map(err => (
         <p key={err}>{err}</p>
       ))}
@@ -79,7 +73,4 @@ function CreateAccountForm({ onLogin }) {
   )
 }
 
-// errors are undefined (empty arr)
 export default CreateAccountForm
-
-// <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>

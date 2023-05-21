@@ -13,7 +13,7 @@ function LoginForm({ onLogin }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ walletKey, password }),
-    }).then(r => { // console.log(r)
+    }).then(r => { 
       if (r.ok) {
         r.json().then(walletKey => onLogin(walletKey))
       } else {
@@ -22,9 +22,6 @@ function LoginForm({ onLogin }) {
     })
   }
   
-  console.log({walletKey})
-  console.log({password})
-
   return (
     <form onSubmit={handleSubmit} className='form'>
       <div className='form-field'>

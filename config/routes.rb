@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :wallets, only: [:index, :show] # index for development only
+  resources :wallets, only: :show
   post '/create-account', to: 'wallets#create'
-  get '/wallet', to: 'wallets#show' # '/wallet'
-  # get "/me", to: "users#show"
-
+  get '/wallet', to: 'wallets#show' # get "/me", to: "users#show"
   resources :cryptos, only: :index
-
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   

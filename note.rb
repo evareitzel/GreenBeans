@@ -374,3 +374,12 @@
 # end
 
 
+
+
+
+# from CreateAccountForm.js
+
+// const [isLoading, setIsLoading] = useState(false)
+// setIsLoading(true) # top of component func
+// setIsLoading(false) # in fetch
+// <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>
