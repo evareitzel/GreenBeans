@@ -1,28 +1,9 @@
 /* #212121 */
-.app {
-  padding-top: 12px;
+
+.wrapper {
+  margin: 40px auto;
   justify-content: center;
   text-align: center;
-  width: 500px;
-  margin: auto
-}
-
-.button {
-  margin: 8px;
-}
-
-.card {
-  border: 2px solid #C8E6C9;
-  border-radius: 16px;
-  margin: 20px;
-}
-
-.hr {
-  width: 380px;
-  align-items: center;
-}
-
-.header {
   width: 500px;
 }
 
@@ -32,7 +13,6 @@
   text-decoration: none;
   color: #4CAF50;
   letter-spacing: 1px;
-  font-size: 20px;
   justify-content: center;
 }
 
@@ -49,7 +29,17 @@
   letter-spacing: 1px;
 }
 
-.wrapper {
-  max-width: 500px;
-  margin: 40px auto;
+.button {
+  margin: 8px;
+}
+
+.card {
+  border: 2px solid #C8E6C9;
+  border-radius: 16px;
+  margin: 20px;
+}
+
+.hr {
+  width: 380px;
+  align-items: center;
 }

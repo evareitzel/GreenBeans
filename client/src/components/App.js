@@ -20,12 +20,14 @@ function App() {
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
   return (
-    <main>
+    <main className='wrapper'>
       <Router>
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
           <Route path='/' element={<Wallet />} walletKey={walletKey} />
           <Route path='/cryptos' element={<Cryptos />} />
+          {/* Redirect  */}
+          <Route path='*' element={<Wallet />} />
         </Routes>
       </Router>
     </main>

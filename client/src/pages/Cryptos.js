@@ -1,4 +1,4 @@
-function Cryptos() {
+function Cryptos({ walletKey }) {
   return (
     <div>
       Cryptos!
