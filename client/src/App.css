@@ -2,7 +2,7 @@
 
 .wrapper {
   margin: 40px auto;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
   width: 500px;
 }
@@ -30,7 +30,30 @@
 }
 
 .button {
-  margin: 8px;
+  background-color: #388E3C;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 16px 32px;
+  font-size: calc(10px + 2vmin);
+  letter-spacing: 1px;
+  margin: 20px 0 20px 0;
+}
+
+.button-wrapper {
+  text-align: center;
+}
+
+.ghost-button {
+  border-radius: 50px;
+  background-color: #fff;
+  color: #388E3C;
+  border: 1px solid #388E3C;
+  margin: 20px 0 20px 0;
+
+  padding: 16px 32px;
+  font-size: calc(10px + 2vmin);
+  letter-spacing: 1px;
 }
 
 .card {
@@ -40,6 +63,23 @@
 }
 
 .hr {
-  width: 380px;
-  align-items: center;
+  margin: 0 60px;
+}
+
+.form {
+  text-align: left;
+  padding: 20px 50px;
+}
+
+.form-field {
+  margin: 8px 20px;
+}
+
+.form-input{
+  border: none;
+  border-radius: 50px;
+  background-color: #eee;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
 }

@@ -12,10 +12,11 @@ function Login({ onLogin }) {
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
-          <hr />
+          <hr className='hr'/>
           <p>
             Don't have an account yet? &nbsp;
-            <button onClick={() => setShowLogin(false)}>
+            <br />
+            <button onClick={() => setShowLogin(false)} className='ghost-button'>
               Create Account
             </button>
           </p>
@@ -23,10 +24,11 @@ function Login({ onLogin }) {
       ) : (
         <>
           <CreateAccountForm onLogin={onLogin} />
-          <hr />
+          <hr className='hr'/>
           <p>
             Already have an account? &nbsp;
-            <button onClick={() => setShowLogin(true)}>
+            <br />
+            <button onClick={() => setShowLogin(true)} className='ghost-button'>
               Log In
             </button>
           </p>

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   
-  resources :walletcryptos, only: :index
+  resources :wallets, only: :show
   resources :cryptos, only: :index
-  resources :wallets, only: [:index, :show]
+
+  post '/create-account', to: 'wallets#create'
 
   post '/login', to: 'sessions#create'
   get '/wallet', to: 'wallets#show' # get "/me", to: "users#show"
-  post '/create-account', to: 'wallets#create'
   delete '/logout', to: 'sessions#destroy'
   
   # Routing logic: fallback requests for React Router.

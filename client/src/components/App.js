@@ -8,6 +8,9 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
 
+  console.log('walletKey from App.js: ')
+  console.log(walletKey)
+
   useEffect(() => {
     // auto-login
     fetch('/wallet').then(r => {

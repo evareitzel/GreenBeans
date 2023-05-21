@@ -4,16 +4,13 @@ function CreateAccountForm({ onLogin }) {
   const [walletKey, setWalletKey] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
-  // const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([])
   // const [isLoading, setIsLoading] = useState(false)
 
   function handleSubmit(e) {
     e.preventDefault()
-    // console.log(wallet)
-    // console.log(password)
-    // console.log(passwordConfirmation
 
-    // setErrors([])
+    setErrors([])
     // setIsLoading(true)
     fetch('/create-account', {
       method: 'POST',
@@ -29,19 +26,19 @@ function CreateAccountForm({ onLogin }) {
       // setIsLoading(false)
       if(r.ok) {
         r.json().then(wallet => onLogin(wallet))
-        // console.log(walletKey)
       } else {
-        console.log('Errors!')
-        // r.json().then(err => setErrors(err.errors))
+        // console.log('Errors!')
+        r.json().then(err => setErrors(err.errors))
       }
     })
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className='form'>
+      <div className='form-field'>
         <label>Wallet Key </label>
         <input 
+          className="form-input"
           type='text'
           id='wallet_key' // 'wallet'?
           autoComplete='off'
@@ -49,9 +46,10 @@ function CreateAccountForm({ onLogin }) {
           onChange={e => setWalletKey(e.target.value)}
         />
       </div>
-      <div>
+      <div className='form-field'>
         <label>Password </label>
         <input
+          className="form-input"
           type='password'
           id='password'
           value={password}
@@ -59,9 +57,10 @@ function CreateAccountForm({ onLogin }) {
           autoComplete='current-password'
         />
       </div>
-      <div>
+      <div className='form-field'>
         <label>Password Confirmation </label>
         <input 
+          className="form-input"
           type='password'
           id='password_confirmation'
           value={passwordConfirmation}
@@ -69,10 +68,13 @@ function CreateAccountForm({ onLogin }) {
           autoComplete='current-password'
         />
       </div>
-      <button type='submit'>Create Account</button>
-      {/* {errors.map(err => (
-        <p key={err}>! {err}</p>
-      ))} */}
+      <div className='button-wrapper'>
+        <button type='submit' className='button'>Create Account</button> 
+      </div>
+      {/* throwing a TypeError: Cannot read properties of undefined (reading 'map') */}
+      {errors.map(err => (
+        <p key={err}>{err}</p>
+      ))}
     </form>
   )
 }
