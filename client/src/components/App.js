@@ -26,9 +26,31 @@ function App() {
   console.log(walletKey.password_digest) // looks unfamiliar
   // wallet_key is null (?)
 
-  function handleAddCrypto() {
-    // fetch - POST /walletcryptos
+  function handleAddCrypto(e) { // e?
+    console.log(`handleAddCrypto: ${e.target.value}`)
+    // fetch('/walletcryptos', { 
+  //   fetch('/add-crypto', { 
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       // 'wallet_id': 'wallet.id',
+  //       // wallet.id,
+  //       // 'crypto.id': 'crypto.id',
+  //       // crypto.id,
+  //     }),
+  // }).then(r => console.log(r))
   }
+
+  // ion NavBar({setWalletKey}) {
+  //   function handleLogoutClick() {
+  //     fetch('/logout', { method: 'DELETE' }).then(r => {
+  //       if (r.ok) {
+  //         setWalletKey(null)
+  //       }
+  //     })
+  //   }
 
   return (
     <main className='wrapper'>

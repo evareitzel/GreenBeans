@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/create-account', to: 'wallets#create'
   get '/wallet', to: 'wallets#show' # get "/me", to: "users#show"
   resources :cryptos, only: :index
+  post 'add-crypto', to: 'walletcryptos#create' #
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
