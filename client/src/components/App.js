@@ -20,8 +20,8 @@ function App() {
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
-  console.log('WalletKey from App.js: ')
-  console.log(walletKey)
+  // console.log('WalletKey from App.js: ')
+  // console.log(walletKey)
 
   function handleAddCrypto(e) { // e?
     console.log(`handleAddCrypto func from App.js: ${e.target.value}`)
@@ -54,7 +54,7 @@ function App() {
       <Router>
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
-          <Route path='/' element={<Wallet />} walletKey={walletKey} />
+          <Route path='/' element={<Wallet walletKey={walletKey} />} />
           <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto} />} />
           <Route path='*' element={<Wallet walletKey={walletKey} />} />
         </Routes>

@@ -1,9 +1,9 @@
 function Wallet({ walletKey }) {
 
-  // console.log(walletKey)
+  console.log(walletKey)
   return (
     <div>
-      <h2>Wallet Key xxxxx {walletKey}</h2> {/* fix */}
+      <h2>Wallet Key {walletKey}</h2>
       <p>My Cryptos</p>
       <p>(render cryptos here)</p>
       <p>Increase/decrease cryptos (PATCH)</p>
