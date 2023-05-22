@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :wallets, only: :show
+  # resources :wallets, only: :show
   post '/create-account', to: 'wallets#create'
   get '/wallet', to: 'wallets#show' # get "/me", to: "users#show"
   resources :cryptos, only: :index

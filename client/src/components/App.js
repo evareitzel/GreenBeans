@@ -6,18 +6,25 @@ import Wallet from "../pages/Wallet"
 import Cryptos from "../pages/Cryptos"
 
 function App() {
-  const [walletKey, setWalletKey] = useState(null)
+  // const [walletKey, setWalletKey] = useState(null)
+  const [walletKey, setWalletKey] = useState('')
+
 
   useEffect(() => {
     // auto-login
     fetch('/wallet').then(r => {
       if (r.ok) {
-        r.json().then((walletKey) => setWalletKey(walletKey))
+        r.json().then(wallet => setWalletKey(wallet.wallet_key))
       }
     })
   }, [])
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
+
+  console.log('WalletKey from App.js: ')
+  console.log(walletKey)
+  console.log(walletKey.password_digest) // looks unfamiliar
+  // wallet_key is null (?)
 
   return (
     <main className='wrapper'>
@@ -26,7 +33,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Wallet />} walletKey={walletKey} />
           <Route path='/cryptos' element={<Cryptos />} />
-          {/* Redirect - but is this redundant bc of the backend controller save? */}
           <Route path='*' element={<Wallet />} />
         </Routes>
       </Router>

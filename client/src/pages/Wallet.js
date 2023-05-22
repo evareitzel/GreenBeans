@@ -3,7 +3,7 @@ function Wallet({ walletKey }) {
   console.log(walletKey)
   return (
     <div>
-      Wallet No. {walletKey} {/* fix */}
+      Wallet Key {walletKey} {/* fix */}
     </div>
   )
 }

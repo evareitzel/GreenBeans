@@ -31,7 +31,8 @@ function CreateAccountForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit} className='form'>
       <div className='form-field'>
-        <label>Wallet Key </label>
+        <label>Wallet Key </label> 
+        {/* htmlFor='wallet_key' */}
         <input 
           className="form-input"
           type='text'
@@ -67,7 +68,7 @@ function CreateAccountForm({ onLogin }) {
         <button type='submit' className='button'>Create Account</button> 
       </div>
       {errors.map(err => (
-        <p key={err}>{err}</p>
+        <div key={err} className='error'>🗙 {err}</div>
       ))}
     </form>
   )

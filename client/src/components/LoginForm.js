@@ -50,7 +50,7 @@ function LoginForm({ onLogin }) {
         <button type='submit' className='button'>Log In</button> 
       </div>
       {errors.map(err => (
-        <p key={err}>{err}</p>
+        <div key={err} className='error'>🗙 {err}</div>
       ))}
     </form>
   )

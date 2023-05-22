@@ -3,8 +3,12 @@ class Wallet < ApplicationRecord
   has_many :cryptos, through: :walletcryptos
   has_secure_password # bcrypt gem
   
-  validates :wallet_key, uniqueness: true, length: { is: 29 } # presence: true
+  # erroring out when input meets validations
+  
+  # validates :wallet_key, uniqueness: true, length: { is: 5 }   
+  validates :wallet_key,presence: true 
 
-  validates :password_digest, uniqueness: true, length: { in: 12..20 } # presence: true
+  # validates :password_digest, uniqueness: true, length: { in: 8..12 } 
+  validates :password_digest, presence: true 
 
 end

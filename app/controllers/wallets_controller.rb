@@ -17,7 +17,6 @@ class WalletsController < ApplicationController
 
   def wallet_params
     params.permit(:wallet_key, :password)
-    # :password_confirmation
   end
 
 end
