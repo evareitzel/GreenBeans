@@ -7,16 +7,14 @@ import Cryptos from "../pages/Cryptos"
 
 function App() {
   const [walletKey, setWalletKey] = useState(null)
-  const [wallet, setWallet] = useState(null)
-  // const [cryptos, setCryptos] = useState([])
+  const [cryptos, setCryptos] = useState([])
 
   useEffect(() => {
     // auto-login
     fetch('/wallet').then(r => { 
       if (r.ok) {
         r.json()
-        .then(wallet => setWalletKey(wallet.wallet_key))
-        // .then(wallet => setWallet(wallet))
+        .then(wallet => setWalletKey(wallet.wallet_key))        
       }
     })
   }, [])
@@ -24,20 +22,13 @@ function App() {
   useEffect(() =>{
     fetch('/wallet')
     .then(r => r.json())
-    .then(wallet => setWallet(wallet))
+    .then(wallet => setCryptos(wallet.cryptos))
   }, [])
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
-  // console.log('WalletKey from App.js: ')
-  // console.log(walletKey)
-  // console.log('Wallet from App.js: ')
-  // console.log(wallet)
-
-  // console.log(wallet.cryptos)
-
-  function handleAddCrypto(e) { // e?
-    console.log(`handleAddCrypto func from App.js: ${e.target.value}`)
+  function handleAddCrypto(e) {
+    console.log(`handleAddCrypto func from App.js`)
     // fetch('/walletcryptos', { 
   //   fetch('/add-crypto', { 
   //     method: 'POST',
@@ -62,13 +53,18 @@ function App() {
   //     })
   //   }
 
+  function handleRemoveCrypto() {
+    console.log(`remove crypto!`)
+    // fetch('/xxx')
+  }
+
   return (
     <main className='wrapper'>
       <Router>
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
-          <Route path='/' element={<Wallet walletKey={walletKey} wallet={wallet} />} />
-          <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto} />} />
+          <Route path='/' element={<Wallet walletKey={walletKey} cryptos={cryptos} />} />
+          <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto} onRemoveCrypto={handleRemoveCrypto} />} />
           <Route path='*' element={<Wallet walletKey={walletKey} />} />
         </Routes>
       </Router>

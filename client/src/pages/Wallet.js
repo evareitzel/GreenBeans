@@ -1,31 +1,28 @@
-function Wallet({ walletKey, wallet }) {
+function Wallet({ walletKey, cryptos }) {
 
-  console.log(wallet.cryptos)
-  const renderCryptos = wallet.cryptos.map(crypto => (
+  const renderCryptos = cryptos.map(crypto => (
     <li key={crypto.id} className="card">
       <h2>{crypto.name}</h2>
       <h3>{crypto.symbol}</h3>
       <p>${crypto.price}</p>
-      <p>Total: (number of cryptos)</p>
-      <p>$xxx (total amount invested)</p>
-      <button className='button'>+</button> 
-      {/* onClick={onIncreaseCryptos} */}
-      <button className='ghost-button'>-</button> 
-      {/* onClick={onDecreaseCryptos} */}
-      <p>Remove from Wallet</p>
+      <p>Quantity: x | Total: $xxx</p>
+      <button className='incrementer'>+</button> 
+      {/* onClick={onIncrementCryptos} */}
+      <button className='decrementer'>-</button> 
+      {/* onClick={onDecrementCryptos} */}
+      { console.log({crypto}) }
     </li>
+    
   ))
 
   return (
     <div>
       <h2>My Cryptos</h2>
-      <h3>Wallet Key {walletKey}</h3>
-      <p>Increase/decrease cryptos (PATCH)</p>
-      <p>Remove Cryptos (DELETE)</p>
-      <ul className="list"> 
-      {renderCryptos}
-        {/* {cryptos.length == 0 ? <p>Add cryptos</p> : <p>render cryptos here</p>} {renderCryptos} */}
-      </ul>
+      <h3>Wallet Key {walletKey}</h3>        {
+          cryptos.length === 0 
+          ? <p>Add cryptos</p> 
+          : <ul className="list">{renderCryptos}</ul>
+        }
       {/* <link>Add Cryptos (goes to Cryptos page)</link> */}
     </div>
   )
