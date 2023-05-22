@@ -1,8 +1,8 @@
 puts "💰 Seeding Wallets..."
 wallets = Wallet.create([ 
-  { wallet_key: '93D7CD8DD467B5A7D7E1AEC91B16D', password_digest: 'iLd%4#)+yA4!Z*q' }, 
-  { wallet_key: '8436A6BCFD54F38D8D29AEA9FEA85', password_digest: '>Ux.mx%%psdo9J(' }, 
-  { wallet_key: '12797695162E9287B26E86249A132', password_digest: 'i.u;@0j:/$qkPo,' }
+  { wallet_key: 'A4BAD', password: 'lGLzdBMto6' }, 
+  { wallet_key: 'C79DE', password: 'ivamVGizbD' }, 
+  { wallet_key: '629D4', password: 'JtldtEMkqQ' }
 ])
 
 puts "🪙 Seeding Cryptos..."

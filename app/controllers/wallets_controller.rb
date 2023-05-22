@@ -3,6 +3,7 @@ class WalletsController < ApplicationController
 
   # POST /create-account
   def create
+    # byebug
     wallet = Wallet.create!(wallet_params)
     session[:wallet_key] = wallet.wallet_key
     render json: wallet, status: :created
@@ -16,7 +17,7 @@ class WalletsController < ApplicationController
   private
 
   def wallet_params
-    params.permit(:wallet_key, :password)
+    params.permit(:wallet_key, :password, :password_confirmation)
   end
 
 end

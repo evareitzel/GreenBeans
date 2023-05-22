@@ -1,6 +1,6 @@
 function Wallet({ walletKey }) {
 
-  console.log(walletKey)
+  // console.log(walletKey)
   return (
     <div>
       <h2>Wallet Key xxxxx {walletKey}</h2> {/* fix */}

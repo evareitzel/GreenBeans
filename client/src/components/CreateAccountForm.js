@@ -15,9 +15,9 @@ function CreateAccountForm({ onLogin }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        walletKey,
+        "wallet_key": walletKey,
         password,
-        password_confirmation: passwordConfirmation,
+        "password_confirmation": passwordConfirmation,
       }),
     }).then(r => {
       if(r.ok) {

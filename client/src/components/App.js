@@ -6,8 +6,7 @@ import Wallet from "../pages/Wallet"
 import Cryptos from "../pages/Cryptos"
 
 function App() {
-  // const [walletKey, setWalletKey] = useState(null)
-  const [walletKey, setWalletKey] = useState('')
+  const [walletKey, setWalletKey] = useState(null)
 
 
   useEffect(() => {
@@ -23,11 +22,9 @@ function App() {
 
   console.log('WalletKey from App.js: ')
   console.log(walletKey)
-  console.log(walletKey.password_digest) // looks unfamiliar
-  // wallet_key is null (?)
 
   function handleAddCrypto(e) { // e?
-    console.log(`handleAddCrypto: ${e.target.value}`)
+    console.log(`handleAddCrypto func from App.js: ${e.target.value}`)
     // fetch('/walletcryptos', { 
   //   fetch('/add-crypto', { 
   //     method: 'POST',
@@ -58,8 +55,8 @@ function App() {
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
           <Route path='/' element={<Wallet />} walletKey={walletKey} />
-          <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto}/>} />
-          <Route path='*' element={<Wallet />} />
+          <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto} />} />
+          <Route path='*' element={<Wallet walletKey={walletKey} />} />
         </Routes>
       </Router>
     </main>

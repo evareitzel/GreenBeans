@@ -12,7 +12,9 @@ function LoginForm({ onLogin }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ walletKey, password }),
+      body: JSON.stringify({ 
+        "wallet_key": walletKey, 
+        password }),
     }).then(r => { 
       if (r.ok) {
         r.json().then(walletKey => onLogin(walletKey))

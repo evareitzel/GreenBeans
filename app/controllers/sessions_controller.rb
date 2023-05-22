@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
   
   # POST /login
   def create
-    wallet = Wallet.find_by(wallet_key: params[:wallet_key]) # ? wallet_key/walletKey
-    if wallet # &.authenticate(params[:password]) # ?  password/password_digest
+    wallet = Wallet.find_by(wallet_key: params[:wallet_key])
+    # byebug
+    if wallet&.authenticate(params[:password])
     #### CANNOT LOG IN WHEN .authenticate is called
       session[:wallet_key] = wallet.wallet_key # 2/2 - get wristband # WKG?
       render json: wallet
