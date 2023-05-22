@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 
-function Cryptos({ walletKey }) { // walletKey needed?
+function Cryptos({ walletKey, onAddCrypto }) { // walletKey needed? 
   const [cryptos, setCryptos] = useState([])
 
   useEffect(() =>{
@@ -14,6 +14,7 @@ function Cryptos({ walletKey }) { // walletKey needed?
       <h2>{crypto.name}</h2>
       <h3>{crypto.symbol}</h3>
       <p>${crypto.price}</p>
+      <button className='ghost-button' onClick={onAddCrypto}>Add to Wallet</button>
     </div>
   ))
 

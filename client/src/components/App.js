@@ -26,13 +26,17 @@ function App() {
   console.log(walletKey.password_digest) // looks unfamiliar
   // wallet_key is null (?)
 
+  function handleAddCrypto() {
+    // fetch - POST /walletcryptos
+  }
+
   return (
     <main className='wrapper'>
       <Router>
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
           <Route path='/' element={<Wallet />} walletKey={walletKey} />
-          <Route path='/cryptos' element={<Cryptos />} />
+          <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto}/>} />
           <Route path='*' element={<Wallet />} />
         </Routes>
       </Router>
