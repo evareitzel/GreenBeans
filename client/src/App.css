@@ -52,6 +52,13 @@
   letter-spacing: 1px;
 }
 
+.list {
+  /* margin: 0;
+  padding: 0; */
+  padding: 0;
+  list-style-type: none;
+}
+
 .card {
   border: 2px solid #C8E6C9;
   border-radius: 16px;

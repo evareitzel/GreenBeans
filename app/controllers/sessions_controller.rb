@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:wallet_key] = wallet.wallet_key # 2/2 - get wristband # WKG?
       render json: wallet
     else
-      render json: { errors: ['Invalid username or password'] }, status: :unauthorized
+      render json: { errors: ['Invalid wallet key or password'] }, status: :unauthorized
     end
   end
 
