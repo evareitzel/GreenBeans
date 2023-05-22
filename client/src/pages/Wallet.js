@@ -5,7 +5,7 @@ function Wallet({ walletKey, cryptos }) {
       <h2>{crypto.name}</h2>
       <h3>{crypto.symbol}</h3>
       <p>${crypto.price}</p>
-      <p>Quantity: x | Total: $xxx</p>
+      <p>Quantity: {crypto.quantity} | Total: ${crypto.quantity * crypto.price}</p>
       <button className='incrementer'>+</button> 
       {/* onClick={onIncrementCryptos} */}
       <button className='decrementer'>-</button> 

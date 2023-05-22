@@ -8,6 +8,7 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [cryptos, setCryptos] = useState([])
+  const [wallet, setWallet] = useState(null)
 
   useEffect(() => {
     // auto-login
@@ -25,33 +26,43 @@ function App() {
     .then(wallet => setCryptos(wallet.cryptos))
   }, [])
 
+
+  useEffect(() =>{
+    fetch('/wallet')
+    .then(r => r.json())
+    .then(wallet => setWallet(wallet))
+  }, [])
+
+  console.log(wallet)
+
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
-  function handleAddCrypto(e) {
-    console.log(`handleAddCrypto func from App.js`)
+  function handleAddCrypto(crypto) {
+    console.log(crypto)
+  }
+
+
     // fetch('/walletcryptos', { 
-  //   fetch('/add-crypto', { 
   //     method: 'POST',
   //     headers: {
   //       'Content-Type': 'application/json',
   //     },
   //     body: JSON.stringify({
-  //       // 'wallet_id': 'wallet.id',
-  //       // wallet.id,
-  //       // 'crypto.id': 'crypto.id',
-  //       // crypto.id,
+  //       'wallet_id': wallet.id,
+  //       'crypto_id': crypto.id,
   //     }),
-  // }).then(r => console.log(r))
-  }
+  // })
+  // .then(r => r.json())
+  // .then(r => console.log(r))
 
-  // ion NavBar({setWalletKey}) {
+// ion NavBar({setWalletKey}) {
   //   function handleLogoutClick() {
   //     fetch('/logout', { method: 'DELETE' }).then(r => {
   //       if (r.ok) {
   //         setWalletKey(null)
   //       }
   //     })
-  //   }
+    // }
 
   function handleRemoveCrypto() {
     console.log(`remove crypto!`)

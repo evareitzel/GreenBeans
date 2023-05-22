@@ -1,12 +1,14 @@
 class WalletcryptosController < ApplicationController
 
-  # POST /add-crypto
+  # POST /walletcryptos
   def create
-    walletcrypto = Walletcrypto.create(walletcrypto_params)
+    byebug
+    walletcrypto = Walletcrypto.create!(walletcrypto_params)
+    render json: walletcrypto, status: :created 
   end
 
   private
-  def wallet_crypto_params
+  def walletcrypto_params
     params.permit(:wallet_id, :crypto_id)
   end
 
