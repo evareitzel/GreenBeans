@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_22_084646) do
+ActiveRecord::Schema.define(version: 2023_05_22_151347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2023_05_22_084646) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "quantity"
   end
 
   create_table "walletcryptos", force: :cascade do |t|
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 2023_05_22_084646) do
     t.bigint "crypto_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity"
     t.index ["crypto_id"], name: "index_walletcryptos_on_crypto_id"
     t.index ["wallet_id"], name: "index_walletcryptos_on_wallet_id"
   end

@@ -383,3 +383,12 @@
 // setIsLoading(true) # top of component func
 // setIsLoading(false) # in fetch
 // <button type='submit'>{isLoading ? 'Loading...' : 'Create Account'}</button>
+# from App.js (should be in NavBar.js)
+
+# //   function handleLogoutClick() {
+#   //     fetch('/logout', { method: 'DELETE' }).then(r => {
+#   //       if (r.ok) {
+#   //         setWalletKey(null)
+#   //       }
+#   //     })
+#     // }

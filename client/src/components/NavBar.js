@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import "../App.css"
 
 function NavBar({setWalletKey}) {
+  
   function handleLogoutClick() {
     fetch('/logout', { method: 'DELETE' }).then(r => {
       if (r.ok) {
