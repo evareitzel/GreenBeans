@@ -108,13 +108,22 @@
   margin: 8px 20px;
 }
 
-.form-input{
+.form-input {
   border: none;
   border-radius: 50px;
   background-color: #eee;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
+}
+
+.quantity-input {
+  border: none;
+  border-radius: 60px;
+  background-color: #eee;
+  width: 60px;
+  padding: 12px 20px;
+  margin: 8px;
 }
 
 .error {
