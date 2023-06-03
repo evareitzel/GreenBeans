@@ -48,6 +48,7 @@ function Card ({ crypto }){
           </label>
           <button type='submit' className='quantity-button'>Update</button>
         </div>
+        {/* FIX - so validations throw correct errors  */}
         {errors.map(err => (
           <div key={err} className='error'>🗙 {err}</div>
         ))}

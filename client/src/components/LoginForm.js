@@ -27,7 +27,7 @@ function LoginForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit} className='form'>
       <div className='form-field'>
-        <label>Wallet Key </label>
+        <label>Wallet Key
         <input 
           className="form-input"
           type='text'
@@ -36,6 +36,7 @@ function LoginForm({ onLogin }) {
           value={walletKey}
           onChange={e => setWalletKey(e.target.value)}
         />
+        </label>
       </div>
       <div className='form-field'>
         <label>Password
@@ -55,6 +56,7 @@ function LoginForm({ onLogin }) {
       {errors.map(err => (
         <div key={err} className='error'>🗙 {err}</div>
       ))}
+
     </form>
   )
 }

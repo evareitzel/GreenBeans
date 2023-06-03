@@ -5,6 +5,7 @@ function Wallet({ walletKey, cryptos }) {
   const navigate = useNavigate()
   const renderCryptos = cryptos.map(crypto => <Card crypto={crypto} />)
 
+  console.log(cryptos)
   return (
     <div>
       <h2>My Cryptos</h2>
