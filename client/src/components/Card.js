@@ -21,7 +21,7 @@ function Card ({ crypto }){
     })
     .then(r => {
       if(r.ok) {
-        r.json().then(r => setTotal(r.crypto.walletcryptos[0].quantity * crypto.price))
+        r.json().then(r => setTotal((r.crypto.walletcryptos[0].quantity * crypto.price).toFixed(2)))
       } else {
         r.json().then(err => 
         setErrors(err.errors))
