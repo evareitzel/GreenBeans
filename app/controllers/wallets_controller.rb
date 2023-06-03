@@ -11,15 +11,14 @@ class WalletsController < ApplicationController
 
   # GET /wallet
   def show
-    # wallet = @current_wallet.walletcryptos.crypto
-    render json: @current_wallet, include: :walletcryptos, include: :cryptos
+    render json: @current_wallet, include: :walletcryptos, include: :cryptos # wallet = @current_wallet.walletcryptos.crypto
     # byebug params
   end
 
   private
 
   def wallet_params
-    params.permit(:wallet_key, :password, :password_confirmation)
+    params.permit(:wallet_key, :password)
   end
 
 end

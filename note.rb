@@ -401,6 +401,9 @@
 # from Create Acct
 
 # const [passwordConfirmation, setPasswordConfirmation] = useState('')
+
+# "password_confirmation": passwordConfirmation,
+
 # <div className='form-field'>
 #       <label>Password Confirmation </label>
 #       <input 
