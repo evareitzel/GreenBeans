@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # end 
 
   resources :cryptos do
-    resources :walletcryptos #, only: [:index]
+    resources :walletcryptos, only: [:create, :update]
   end
 
   # Routing logic: fallback requests for React Router.

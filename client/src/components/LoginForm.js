@@ -38,15 +38,16 @@ function LoginForm({ onLogin }) {
         />
       </div>
       <div className='form-field'>
-        <label>Password </label>
-        <input
-          className="form-input"
-          type='password'
-          id='password'
-          autoComplete='current-password'
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
+        <label>Password
+          <input
+            className="form-input"
+            type='password'
+            id='password'
+            autoComplete='current-password'
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </label>
       </div>
       <div className='button-wrapper'>
         <button type='submit' className='button'>Log In</button> 

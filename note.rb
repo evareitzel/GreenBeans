@@ -392,3 +392,25 @@
 #   //       }
 #   //     })
 #     // }
+
+
+
+
+
+
+# from Create Acct
+
+# const [passwordConfirmation, setPasswordConfirmation] = useState('')
+# <div className='form-field'>
+#       <label>Password Confirmation </label>
+#       <input 
+#         className="form-input"
+#         type='password'
+#         id='password_confirmation'
+#         value={passwordConfirmation}
+#         onChange={e => setPasswordConfirmation(e.target.value)}
+#         autoComplete='current-password'
+#       />
+#     </div>
+
+

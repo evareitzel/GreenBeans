@@ -2,10 +2,9 @@ import { useState } from "react"
 
 function CreateAccountForm({ onLogin }) {
   const [walletKey, setWalletKey] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const [password, setPassword] = useState('')      
   const [errors, setErrors] = useState([])
-
+  
   function handleSubmit(e) {
     e.preventDefault()
     setErrors([])
@@ -19,7 +18,8 @@ function CreateAccountForm({ onLogin }) {
         password,
         "password_confirmation": passwordConfirmation,
       }),
-    }).then(r => {
+    })
+    .then(r => {
       if(r.ok) {
         r.json().then(walletKey => onLogin(walletKey))
       } else {
@@ -31,38 +31,28 @@ function CreateAccountForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit} className='form'>
       <div className='form-field'>
-        <label>Wallet Key </label> 
-        {/* htmlFor='wallet_key' */}
-        <input 
-          className="form-input"
-          type='text'
-          id='wallet_key'
-          autoComplete='off'
-          value={walletKey}
-          onChange={e => setWalletKey(e.target.value)}
-        />
+        <label>Wallet Key 
+          <input 
+            className="form-input"
+            type='text'
+            id='wallet_key'
+            autoComplete='off'
+            value={walletKey}
+            onChange={e => setWalletKey(e.target.value)}
+          />
+        </label> 
       </div>
       <div className='form-field'>
-        <label>Password </label>
-        <input
-          className="form-input"
-          type='password'
-          id='password'
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          autoComplete='current-password'
-        />
-      </div>
-      <div className='form-field'>
-        <label>Password Confirmation </label>
-        <input 
-          className="form-input"
-          type='password'
-          id='password_confirmation'
-          value={passwordConfirmation}
-          onChange={e => setPasswordConfirmation(e.target.value)}
-          autoComplete='current-password'
-        />
+        <label>Password 
+          <input
+            className="form-input"
+            type='password'
+            id='password'
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            autoComplete='current-password'
+          />
+        </label>
       </div>
       <div className='button-wrapper'>
         <button type='submit' className='button'>Create Account</button> 

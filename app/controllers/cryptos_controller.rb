@@ -7,8 +7,8 @@ class CryptosController < ApplicationController
 
   # PATCH /cryptos/:id
   def update
-    crypto = Crypto.find(id: params[:id])
-    crypto.update(crypto_params)
+    crypto = Crypto.find(params[:id]) # id:
+    crypto.update(crypto_params) # update!
     render json: crypto
   end
 

@@ -1,33 +1,58 @@
 import { useState } from "react"
 
 function Card ({ crypto }){
+  const { id } = crypto  
   const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
+  const [total, setTotal] = useState(quantity * crypto.price)
+  const [errors, setErrors] = useState([])
 
-  function handleSubmit(e){
-    setQuantity(e.target.value)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setErrors([])
+    fetch(`/walletcryptos/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        quantity
+      }),
+    })
+    .then(r => {
+      if(r.ok) {
+        r.json().then(r => setTotal(r.crypto.walletcryptos[0].quantity * crypto.price))
+      } else {
+        r.json().then(err => 
+        setErrors(err.errors))
+        console.log(errors)
+      }
+    })
   }
 
   return(
     <li key={crypto.id} className="card">
-      {/* {console.log(crypto.walletcryptos)} */}
-      <h2>{crypto.name}</h2>
       <p><strong>{crypto.symbol}</strong> ${crypto.price}</p>
+      <h2>{crypto.name}</h2>
       <form onSubmit={handleSubmit} > 
         <div className='form-field'>
-          <label>Quantity</label>
-          <input 
-            className="quantity-input"
-            type='text'
-            // id=
-            value= {quantity} // {crypto.walletcryptos[0].quantity}
-            autoComplete='off'
-            onChange={e => setQuantity(e.target.value)}
-          />
+          <label>Quantity
+            <input 
+              className="quantity-input"
+              type='text'
+              id='quantity'
+              value={quantity}
+              autoComplete='off'
+              onChange={e => setQuantity(e.target.value)}
+            />
+          </label>
+          <button type='submit' className='quantity-button'>Update</button>
         </div>
-        <button type='submit' className='ghost-button'>Update Quantity</button>
+        {errors.map(err => (
+          <div key={err} className='error'>🗙 {err}</div>
+        ))}
       </form>
-
-      <h3>${crypto.walletcryptos[0].quantity * crypto.price}</h3>
+      <p className='total'>$ {total}</p>
     </li>
   )
 }
@@ -35,7 +60,7 @@ function Card ({ crypto }){
 export default Card
 
 // onRemoveCrypto
-  //       <input 
+  //       <input
   //         className="form-input"
   //         type='text'
   //         autoComplete='off'
@@ -43,7 +68,7 @@ export default Card
   //       />
 
 
-  // console.log(walletCryptos)
+
 
 
   // function onIncrementClick(crypto){
