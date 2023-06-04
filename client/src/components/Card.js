@@ -11,7 +11,7 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
     fetch(`/walletcryptos/${id}`, {
       method: 'DELETE',
     })
-    // onDeleteWalletcrypto(walletcrypto)
+    onDeleteWalletcrypto(walletcrypto) // id needed here?
   }
 
   return(

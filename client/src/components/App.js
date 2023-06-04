@@ -37,10 +37,11 @@ function App() {
     setWalletcryptos([walletcrypto, ...walletcryptos]) // .sort() alphabetically by name
   }
 
-  function handleDeleteWalletcrypto(walletcrypto) {
-        console.log('Delete click from App.js!')
-        // setWalletcryptos()
-
+  function handleDeleteWalletcrypto(deleted) {
+    const filtered = walletcryptos.filter(walletcrypto => {
+      return walletcrypto.id !== deleted.id   
+    })
+    setWalletcryptos(filtered)
   }
 
   return (
@@ -54,6 +55,7 @@ function App() {
               walletKey={walletKey}
               wallet={wallet}
               walletcryptos={walletcryptos}
+              onDeleteWalletcrypto={handleDeleteWalletcrypto}
             />}
           />
           <Route 
@@ -61,7 +63,6 @@ function App() {
             element={<Cryptos
               wallet={wallet}
               onAddWalletcrypto={handleAddWalletcrypto}
-              onDeleteWalletcrypto={handleDeleteWalletcrypto}
             />} 
           />
         </Routes>
