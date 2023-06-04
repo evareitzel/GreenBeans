@@ -1,8 +1,8 @@
 // import { useState } from "react"
 
 function Card ({walletcrypto}){
-  // const {crypto} = walletCrypto
-  // console.log(crypto)
+  const {crypto} = walletcrypto
+  // console.log(crypto.symbol)
 
   // const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
   // const [total, setTotal] = useState(quantity * crypto.price) // FIX so pulling info from walletcryptos DB
@@ -38,8 +38,8 @@ function Card ({walletcrypto}){
 
   return(
     <li key={crypto.id} className="card">
-      <p><strong>{walletcrypto.crypto.symbol}</strong> ${walletcrypto.crypto.price}</p>
-      <h2>{walletcrypto.crypto.name}</h2>
+      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p> {/* ////ERROR//// TypeError: Cannot read properties of undefined (reading 'symbol') */}
+      <h2>{crypto.name}</h2>
 
       <p>Quantity: {walletcrypto.quantity}</p>
       

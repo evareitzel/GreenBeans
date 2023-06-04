@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react"
 
-function Cryptos({wallet, onAddCrypto}) { // , cryptos
+function Cryptos({wallet, onAddCrypto}) {
   const [cryptos, setCryptos] = useState([])
   const [quantity, setQuantity] = useState('1')
-  const [symbol, setSymbol] = useState()
-  // const [cryptoId, setCryptoId] = useState()
+  const [cryptoId, setCryptoId] = useState()
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -17,18 +16,16 @@ function Cryptos({wallet, onAddCrypto}) { // , cryptos
   )) 
 
   const renderSymbols = cryptos.map(crypto => (
-    <option key={crypto.id} value={symbol} >{crypto.symbol}</option>
+    <option 
+      key={crypto.id}
+      id='crypto_id'
+      value={crypto.id} 
+    >{crypto.symbol}</option>
   ))
 
-  // console.log(cryptos)
   function handleFormSubmit(e) {
     e.preventDefault()
-    window.alert(`${symbol} added to Wallet!`)
-
-    // console.log(e.target.value)
-    console.log(crypto.id)
-    console.log(e.target.value)
-
+    window.alert(`Added to Wallet! 🌱`)
     // render AR validation errors
 
     fetch('/walletcryptos', {
@@ -38,20 +35,12 @@ function Cryptos({wallet, onAddCrypto}) { // , cryptos
       },
       body: JSON.stringify({
         wallet_id: wallet.id,
-        crypto_id: 5, // FIX!!!!!! - get crypto id dynamically
+        crypto_id: cryptoId,
         quantity
-        // total
       }),
     })
     .then(r => r.json())
-    
-    
-    .then(c => console.log(c))
-    // .then(crypto => setWalletCryptos([crypto, ...walletCryptos]) // .sort() alphabetically by name
-    // )
-
-
-  // .then(walletcrypto => onAddCrypto(walletcrypto))
+    .then(walletcrypto => onAddCrypto(walletcrypto))
   }
 
   return (
@@ -64,7 +53,7 @@ function Cryptos({wallet, onAddCrypto}) { // , cryptos
       <div className='form-field'>
         <label>Crypto </label>
         <select
-          onChange={e => setSymbol(e.target.value)} 
+          onChange={e => setCryptoId(e.target.value)}
           className='form-input' 
         >
           {renderSymbols}
@@ -88,14 +77,12 @@ function Cryptos({wallet, onAddCrypto}) { // , cryptos
 }
 
 export default Cryptos
-  // show wallets that have crypto in it (serializer - has_many :wallets or attr :wallets) / no of wallets (popularity!)
+
+
 
     // const showPopularity = crypto.map(c => (
   //   <p>{"*" * c.walletcrypto.length}</p>
   // ))
-
-
-
 
 
 // const renderCryptos = cryptos.map(crypto => (

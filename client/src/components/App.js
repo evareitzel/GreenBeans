@@ -8,7 +8,7 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
-  // const [cryptos, setCryptos] = useState([])
+  const [cryptos, setCryptos] = useState([])
   const [walletcryptos, setWalletcryptos] = useState([])
 
   // console.log(walletCryptos)
@@ -43,23 +43,8 @@ function App() {
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
-  function handleAddCrypto(crypto, quantity) {
-    fetch('/walletcryptos', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'wallet_id': wallet.id,
-        'crypto_id': crypto.id,
-        quantity
-        // total
-      }),
-    })
-    .then(r => r.json())
-    // .then(c => console.log(c))
-    // .then(crypto => setWalletCryptos([crypto, ...walletCryptos]) // .sort() alphabetically by name
-    // )
+  function handleAddCrypto(walletcrypto) {
+    setWalletcryptos([walletcrypto, ...walletcryptos]) // .sort() alphabetically by name
   }
 
   return (
