@@ -450,4 +450,12 @@
 
   # from WalletCryptos Controller
 
-  skip_before_action :authorize, only: :create # FOR DEV ONLY - remove!!!!!!!
+  # skip_before_action :authorize, only: :create # FOR DEV ONLY - remove!!!!!!!
+
+
+  # from Cryptos.js (removed when rendering errors)
+  # window.alert(`Added to Wallet! 🌱`)
+
+
+
+  

@@ -4,7 +4,9 @@ function Cryptos({wallet, onAddCrypto}) {
   const [cryptos, setCryptos] = useState([])
   const [quantity, setQuantity] = useState('1')
   const [cryptoId, setCryptoId] = useState()
-  const [total, setTotal] = useState(quantity * crypto.price)
+  const [total, setTotal] = useState(quantity * crypto.price) // not wkg
+  const [errors, setErrors] = useState([])
+
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -27,8 +29,7 @@ function Cryptos({wallet, onAddCrypto}) {
 
   function handleFormSubmit(e) {
     e.preventDefault()
-    window.alert(`Added to Wallet! 🌱`)
-    // render AR validation errors
+    setErrors([])
 
     fetch('/walletcryptos', {
       method: 'POST',
@@ -39,12 +40,17 @@ function Cryptos({wallet, onAddCrypto}) {
         wallet_id: wallet.id,
         crypto_id: cryptoId,
         quantity,
-        total
+        total // broken
       }),
     })
-    .then(r => r.json())
-    .then(walletcrypto => setTotal(walletcrypto.quantity * crypto.price)) // FIX (still null)
-    .then(walletcrypto => onAddCrypto(walletcrypto))
+    .then(r => {
+      if(r.ok) {
+        r.json().then(walletcrypto => setTotal(walletcrypto.quantity * crypto.price)) // FIX (still null)
+        .then(walletcrypto => onAddCrypto(walletcrypto))
+      } else {
+        r.json().then(err => setErrors(err.errors))
+      }
+    })
   }
 
   return (
@@ -75,6 +81,9 @@ function Cryptos({wallet, onAddCrypto}) {
         />
         </div>
       <button className='button' type='submit'>Add to Wallet</button>
+      {errors.map(err => (
+        <div key={err} className='error'>🗙 {err}</div>
+      ))}
     </form>
     </>
   )
