@@ -2,7 +2,9 @@
 
 function Card ({walletcrypto}){
   const {crypto} = walletcrypto
-  // console.log(crypto.symbol)
+
+  // console.log(crypto)
+  // console.log(walletcrypto)
 
   // const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
   // const [total, setTotal] = useState(quantity * crypto.price) // FIX so pulling info from walletcryptos DB
@@ -42,6 +44,9 @@ function Card ({walletcrypto}){
       <h2>{crypto.name}</h2>
 
       <p>Quantity: {walletcrypto.quantity}</p>
+      <p className='total'>$ {walletcrypto.quantity * crypto.price}</p>
+      {/* FIX to show 2 decimal points */}
+
       
       {/* <form onSubmit={handleSubmit} > 
         <div className='form-field'>
@@ -63,7 +68,6 @@ function Card ({walletcrypto}){
       </form>
 
        */}
-       {/* <p className='total'>$ {walletcrypto.total}</p> */}
     </li>
   )
 }

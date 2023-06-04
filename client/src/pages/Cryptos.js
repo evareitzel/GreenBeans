@@ -4,6 +4,7 @@ function Cryptos({wallet, onAddCrypto}) {
   const [cryptos, setCryptos] = useState([])
   const [quantity, setQuantity] = useState('1')
   const [cryptoId, setCryptoId] = useState()
+  const [total, setTotal] = useState(quantity * crypto.price)
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -15,6 +16,7 @@ function Cryptos({wallet, onAddCrypto}) {
     <li key={crypto.id}>{crypto.symbol} | {crypto.name} ${crypto.price}</li>
   )) 
 
+  // Extract into new component?
   const renderSymbols = cryptos.map(crypto => (
     <option 
       key={crypto.id}
@@ -36,10 +38,12 @@ function Cryptos({wallet, onAddCrypto}) {
       body: JSON.stringify({
         wallet_id: wallet.id,
         crypto_id: cryptoId,
-        quantity
+        quantity,
+        total
       }),
     })
     .then(r => r.json())
+    .then(walletcrypto => setTotal(walletcrypto.quantity * crypto.price)) // FIX (still null)
     .then(walletcrypto => onAddCrypto(walletcrypto))
   }
 
