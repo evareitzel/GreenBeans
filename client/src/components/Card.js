@@ -21,11 +21,10 @@ function Card ({ crypto }){
     })
     .then(r => {
       if(r.ok) {
-        r.json().then(r => setTotal((r.crypto.walletcryptos[0].quantity * crypto.price).toFixed(2)))
+        r.json().then(r => setTotal((r.crypto.walletcryptos[0].quantity * crypto.price).toFixed(2))) // still showing single decimal pt // parseFloat
       } else {
         r.json().then(err => 
         setErrors(err.errors))
-        console.log(errors)
       }
     })
   }
@@ -34,6 +33,7 @@ function Card ({ crypto }){
     <li key={crypto.id} className="card">
       <p><strong>{crypto.symbol}</strong> ${crypto.price}</p>
       <h2>{crypto.name}</h2>
+      
       <form onSubmit={handleSubmit} > 
         <div className='form-field'>
           <label>Quantity
@@ -48,11 +48,16 @@ function Card ({ crypto }){
           </label>
           <button type='submit' className='quantity-button'>Update</button>
         </div>
+
+        {/* {console.log(`errors: ${errors}`)} */}
+        
         {/* FIX - so validations throw correct errors  */}
         {errors.map(err => (
-          <div key={err} className='error'>🗙 {err}</div>
+          console.log(err)
+          // <div key={err} className='error'>🗙 {err}</div>
         ))}
       </form>
+
       <p className='total'>$ {total}</p>
     </li>
   )

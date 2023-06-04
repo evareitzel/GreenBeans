@@ -1,8 +1,8 @@
 puts "💰 Seeding Wallets..."
 wallets = Wallet.create([ 
-  { wallet_key: 'A4BAD', password: 'lGLzdBMto6' }, 
-  { wallet_key: 'C79DE', password: 'ivamVGizbD' }, 
-  { wallet_key: '629D4', password: 'JtldtEMkqQ' }
+  { wallet_key: 'A4BAD', password: '1' }, 
+  { wallet_key: 'C79DE', password: '2' }, 
+  { wallet_key: '629D4', password: '3' }
 ])
 
 puts "🪙 Seeding Cryptos..."

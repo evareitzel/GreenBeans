@@ -7,19 +7,22 @@ class WalletcryptosController < ApplicationController
     render json: walletcrypto, status: :created
   end
 
-  # PATCH /walletcryptos/:id
+  # PATCH '/walletcryptos/:id'
   def update
-    # byebug
-    walletcrypto = Walletcrypto.find(params[:id])
+    # byebug ## Not successfully used
+    walletcrypto = find_walletcrypto
     walletcrypto.update!(walletcrypto_params)
     render json: walletcrypto
   end
-
 
   private
 
   def walletcrypto_params
     params.permit(:wallet_id, :crypto_id, :quantity)
+  end
+
+  def find_walletcrypto
+    Walletcrypto.find(params[:id])
   end
 
 end
