@@ -417,3 +417,15 @@
 #     </div>
 
 
+# from walletcrypto.rb
+
+  # # after initialize :init
+  # def init
+  #   self.crypto.quantity = 1
+  # end
+
+
+
+
+
+  

@@ -4,29 +4,39 @@ function Cryptos({ onAddCrypto, walletCryptos }) {
   const [cryptos, setCryptos] = useState([])
   const [quantity, setQuantity] = useState('1')
 
+  console.log(cryptos)
+
   useEffect(() =>{
     fetch('/cryptos')
     .then(r => r.json())
     .then(cryptos => setCryptos(cryptos))
   }, [])
 
-
-  // if wallet.cryptos includes crypto name ?  : {Add to wallet}
-
-  // walletCryptos.get(crypto) ? 'Remove from wallet' : 'Add to Wallet'
-  // {walletCryptos.find(crypto) ? 'Remove from wallet' : 'Add to Wallet'}
-
   // show wallets that have crypto in it (serializer - has_many :wallets or attr :wallets) / no of wallets (popularity!)
+
+    // const showPopularity = crypto.map(c => (
+  //   <p>{"*" * c.walletcrypto.length}</p>
+  // ))
+
+  const listCryptos = cryptos.map(crypto => (
+    <li> 
+      {crypto.symbol} | {crypto.name} ${crypto.price}
+      {console.log(crypto.walletCryptos)}
+    </li>
+  )) 
 
   const renderCryptos = cryptos.map(crypto => (
     <option key={crypto.id} value={crypto.id}>
-      {crypto.symbol} | {crypto.name} ${crypto.price}
+      {crypto.symbol}
     </option>
   ))
 
   return (
     <>
     <form onSubmit={() => onAddCrypto(crypto, quantity)} className='form'>
+      <ul className='list'>
+        {listCryptos}
+      </ul>
       <h2>Add to Wallet</h2>
       <div className='form-field'>
         <label>Crypto </label>
@@ -64,3 +74,7 @@ export default Cryptos
 //     {/* include a field for user input (starts at 1 and then walletholder can specify in a txt field) */}
 //   </li>
 // ))
+
+
+  // walletCryptos.get(crypto) ? 'Remove from wallet' : 'Add to Wallet'
+  // {walletCryptos.find(crypto) ? 'Remove from wallet' : 'Add to Wallet'}

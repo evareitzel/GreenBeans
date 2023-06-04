@@ -26,6 +26,11 @@ walletcryptos = Walletcrypto.create([
     crypto_id: Crypto.first.id,  
     quantity: 10
   }, 
+  { #
+    wallet_id: Wallet.second.id, 
+    crypto_id: Crypto.first.id,  
+    quantity: 10
+  }, 
   {
     wallet_id: Wallet.first.id, 
     crypto_id: Crypto.second.id,  
@@ -45,6 +50,16 @@ walletcryptos = Walletcrypto.create([
     wallet_id: Wallet.third.id, 
     crypto_id: Crypto.fifth.id,  
     quantity: 10
+  },  
+  { #
+    wallet_id: Wallet.third.id,
+    crypto_id: Crypto.fourth.id,  
+    quantity:10
+  },
+  { #
+    wallet_id: Wallet.third.id,
+    crypto_id: Crypto.fifth.id,  
+    quantity:10
   },
   {
     wallet_id: Wallet.third.id,

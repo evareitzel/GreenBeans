@@ -2,12 +2,11 @@ import { useState } from "react"
 
 function Card ({ crypto }){
 
-  // console.log(crypto)
-  console.log(crypto.walletcryptos[0])
+  // console.log(crypto.walletcryptos[0])
 
   // const { id } = crypto  
   const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
-  const [total, setTotal] = useState(quantity * crypto.price)
+  const [total, setTotal] = useState(quantity * crypto.price) // FIX so pulling info from walletcryptos DB
   // const [errors, setErrors] = useState([])
 
 

@@ -1,10 +1,12 @@
 class WalletcryptosController < ApplicationController
 
+  skip_before_action :authorize, only: :create # FOR DEV ONLY - remove!!!!!!!
+
   # POST /walletcryptos
   def create
     # byebug
     walletcrypto = Walletcrypto.create!(walletcrypto_params) # bang method not rendering errors  
-    render json: walletcrypto, status: :created
+    render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity, :total]), status: :created
   end
 
   # PATCH '/walletcryptos/:id'

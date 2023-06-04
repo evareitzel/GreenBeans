@@ -15,7 +15,11 @@
   
   ## API
   CoinCap API 2.0
-  https://docs.coincap.io/ 
+  https://docs.coincap.io/
+
+  # to reseed
+  $ rails db:seed:replant
+
 
   # Design Elements
 
