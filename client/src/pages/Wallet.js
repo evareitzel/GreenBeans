@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import Card from "../components/Card"
 
-function Wallet({ walletKey, cryptos }) {
+function Wallet({ walletKey, wallet }) {
   const navigate = useNavigate()
+  const {cryptos} = wallet // ?
+
   const renderCryptos = cryptos.map(crypto => <Card crypto={crypto} key={crypto.id} />)
 
   return (

@@ -8,7 +8,7 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
-  const [cryptos, setCryptos] = useState([])
+  // const [cryptos, setCryptos] = useState([])
   const [walletCryptos, setWalletCryptos] = useState([])
 
   useEffect(() => {
@@ -26,11 +26,11 @@ function App() {
       .then(wallet => setWallet(wallet))
   }, [])
 
-    useEffect(() => {
-      fetch('/wallet')
-        .then(r => r.json())
-        .then(wallet => setCryptos(wallet.cryptos))
-    }, [])
+    // useEffect(() => {
+    //   fetch('/wallet')
+    //     .then(r => r.json())
+    //     .then(wallet => setCryptos(wallet.cryptos))
+    // }, [])
   
   useEffect(() => {
     fetch('/wallet')
@@ -53,6 +53,7 @@ function App() {
       }),
     })
       .then(r => r.json())
+      // .then(c => console.log(c))
       .then(crypto => setWalletCryptos([crypto, ...walletCryptos]) // .sort() alphabetically by name
       )
   }
@@ -62,13 +63,13 @@ function App() {
       <Router>
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
-          <Route
+          {/* <Route
             path='/'
             element={<Wallet
               walletKey={walletKey}
-              cryptos={cryptos}
+              wallet={wallet}
             />}
-          />
+          /> */}
           <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto} walletCryptos={walletCryptos} />} />
         </Routes>
       </Router>
