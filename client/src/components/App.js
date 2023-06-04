@@ -9,7 +9,9 @@ function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
   // const [cryptos, setCryptos] = useState([])
-  const [walletCryptos, setWalletCryptos] = useState([])
+  const [walletcryptos, setWalletcryptos] = useState([])
+
+  // console.log(walletCryptos)
 
   useEffect(() => {
     // auto-login
@@ -24,6 +26,7 @@ function App() {
     fetch('/wallet')
       .then(r => r.json())
       .then(wallet => setWallet(wallet))
+      // .then(wallet => console.log(`Wallet from App.js: ${wallet}`))
   }, [])
 
     // useEffect(() => {
@@ -35,7 +38,7 @@ function App() {
   useEffect(() => {
     fetch('/wallet')
       .then(r => r.json())
-      .then(wallet => setWalletCryptos(wallet.walletcryptos))
+      .then(wallet => setWalletcryptos(wallet.walletcryptos))
   }, [])
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
@@ -50,12 +53,13 @@ function App() {
         'wallet_id': wallet.id,
         'crypto_id': crypto.id,
         quantity
+        // total
       }),
     })
-      .then(r => r.json())
-      // .then(c => console.log(c))
-      .then(crypto => setWalletCryptos([crypto, ...walletCryptos]) // .sort() alphabetically by name
-      )
+    .then(r => r.json())
+    // .then(c => console.log(c))
+    // .then(crypto => setWalletCryptos([crypto, ...walletCryptos]) // .sort() alphabetically by name
+    // )
   }
 
   return (
@@ -63,14 +67,22 @@ function App() {
       <Router>
         <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
         <Routes>
-          {/* <Route
+          <Route
             path='/'
             element={<Wallet
               walletKey={walletKey}
               wallet={wallet}
+              // cryptos={cryptos}
+              walletcryptos={walletcryptos}
             />}
-          /> */}
-          <Route path='/cryptos' element={<Cryptos onAddCrypto={handleAddCrypto} walletCryptos={walletCryptos} />} />
+          />
+          <Route 
+            path='/cryptos' 
+            element={<Cryptos
+              wallet={wallet}
+              onAddCrypto={handleAddCrypto}
+            />} 
+          />
         </Routes>
       </Router>
     </main>

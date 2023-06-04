@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/wallet', to: 'wallets#show'
-  resources :cryptos, only: [:index, :create, :update]
-  resources :walletcryptos, only: [:create, :update]
+  resources :cryptos, only: [:index]
+  resources :walletcryptos, only: [:create, :update] # READ, DESTROY
 
   
   # Routing logic: fallback requests for React Router.

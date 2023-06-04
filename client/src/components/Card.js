@@ -1,12 +1,11 @@
-import { useState } from "react"
+// import { useState } from "react"
 
-function Card ({ crypto }){
+function Card ({walletcrypto}){
+  // const {crypto} = walletCrypto
+  // console.log(crypto)
 
-  // console.log(crypto.walletcryptos[0])
-
-  // const { id } = crypto  
-  const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
-  const [total, setTotal] = useState(quantity * crypto.price) // FIX so pulling info from walletcryptos DB
+  // const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
+  // const [total, setTotal] = useState(quantity * crypto.price) // FIX so pulling info from walletcryptos DB
   // const [errors, setErrors] = useState([])
 
 
@@ -39,10 +38,10 @@ function Card ({ crypto }){
 
   return(
     <li key={crypto.id} className="card">
-      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p>
-      <h2>{crypto.name}</h2>
+      <p><strong>{walletcrypto.crypto.symbol}</strong> ${walletcrypto.crypto.price}</p>
+      <h2>{walletcrypto.crypto.name}</h2>
 
-      <p>Quantity: {quantity}</p> {/* DEV only */}
+      <p>Quantity: {walletcrypto.quantity}</p>
       
       {/* <form onSubmit={handleSubmit} > 
         <div className='form-field'>
@@ -64,7 +63,7 @@ function Card ({ crypto }){
       </form>
 
        */}
-       <p className='total'>$ {total}</p>
+       {/* <p className='total'>$ {walletcrypto.total}</p> */}
     </li>
   )
 }

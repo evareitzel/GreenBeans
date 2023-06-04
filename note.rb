@@ -428,4 +428,26 @@
 
 
 
-  
+## bcrypt gem - wallet.rb
+
+  has_secure_password # bcrypt gem
+
+  # validates :password ##???? handled by b-crypt?
+
+  # after initialize :init # 
+
+  # FIX
+  # def init
+  #   self.cryptos ||= []
+  # end
+
+
+
+
+
+
+
+
+  # from WalletCryptos Controller
+
+  skip_before_action :authorize, only: :create # FOR DEV ONLY - remove!!!!!!!

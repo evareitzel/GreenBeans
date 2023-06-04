@@ -1,6 +1,6 @@
 class CryptosController < ApplicationController
 
-  skip_before_action :authorize, only: :index
+  # skip_before_action :authorize, only: :index
 
   # GET /cryptos
   def index

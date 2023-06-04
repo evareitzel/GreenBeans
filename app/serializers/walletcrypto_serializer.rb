@@ -1,3 +1,4 @@
 class WalletcryptoSerializer < ActiveModel::Serializer
-  attributes :id, :wallet_id, :quantity, :total # , :crypto
+  attributes :id, :crypto_id, :quantity, :total, :wallet_id, :crypto
+  # has_one :crypto
 end

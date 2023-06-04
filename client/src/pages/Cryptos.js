@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react"
 
-function Cryptos({ onAddCrypto, walletCryptos }) {
+function Cryptos({wallet, onAddCrypto}) { // , cryptos
   const [cryptos, setCryptos] = useState([])
   const [quantity, setQuantity] = useState('1')
-
-  console.log(cryptos)
+  const [symbol, setSymbol] = useState()
+  // const [cryptoId, setCryptoId] = useState()
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -12,36 +12,62 @@ function Cryptos({ onAddCrypto, walletCryptos }) {
     .then(cryptos => setCryptos(cryptos))
   }, [])
 
-  // show wallets that have crypto in it (serializer - has_many :wallets or attr :wallets) / no of wallets (popularity!)
-
-    // const showPopularity = crypto.map(c => (
-  //   <p>{"*" * c.walletcrypto.length}</p>
-  // ))
-
-  const listCryptos = cryptos.map(crypto => (
-    <li> 
-      {crypto.symbol} | {crypto.name} ${crypto.price}
-      {console.log(crypto.walletCryptos)}
-    </li>
+  const renderCryptos = cryptos.map(crypto => (
+    <li key={crypto.id}>{crypto.symbol} | {crypto.name} ${crypto.price}</li>
   )) 
 
-  const renderCryptos = cryptos.map(crypto => (
-    <option key={crypto.id} value={crypto.id}>
-      {crypto.symbol}
-    </option>
+  const renderSymbols = cryptos.map(crypto => (
+    <option key={crypto.id} value={symbol} >{crypto.symbol}</option>
   ))
+
+  // console.log(cryptos)
+  function handleFormSubmit(e) {
+    e.preventDefault()
+    window.alert(`${symbol} added to Wallet!`)
+
+    // console.log(e.target.value)
+    console.log(crypto.id)
+    console.log(e.target.value)
+
+    // render AR validation errors
+
+    fetch('/walletcryptos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        wallet_id: wallet.id,
+        crypto_id: 5, // FIX!!!!!! - get crypto id dynamically
+        quantity
+        // total
+      }),
+    })
+    .then(r => r.json())
+    
+    
+    .then(c => console.log(c))
+    // .then(crypto => setWalletCryptos([crypto, ...walletCryptos]) // .sort() alphabetically by name
+    // )
+
+
+  // .then(walletcrypto => onAddCrypto(walletcrypto))
+  }
 
   return (
     <>
-    <form onSubmit={() => onAddCrypto(crypto, quantity)} className='form'>
+    <form onSubmit={handleFormSubmit} className='form'>
       <ul className='list'>
-        {listCryptos}
+        {renderCryptos}
       </ul>
       <h2>Add to Wallet</h2>
       <div className='form-field'>
         <label>Crypto </label>
-        <select className='form-input'>
-          {renderCryptos}
+        <select
+          onChange={e => setSymbol(e.target.value)} 
+          className='form-input' 
+        >
+          {renderSymbols}
         </select>
       </div>
       <div className='form-field'>
@@ -62,6 +88,13 @@ function Cryptos({ onAddCrypto, walletCryptos }) {
 }
 
 export default Cryptos
+  // show wallets that have crypto in it (serializer - has_many :wallets or attr :wallets) / no of wallets (popularity!)
+
+    // const showPopularity = crypto.map(c => (
+  //   <p>{"*" * c.walletcrypto.length}</p>
+  // ))
+
+
 
 
 

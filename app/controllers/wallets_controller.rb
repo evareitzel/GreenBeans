@@ -11,7 +11,7 @@ class WalletsController < ApplicationController
 
   # GET /wallet
   def show
-    render json: @current_wallet # .to_json(only: [:id, :wallet_key])
+    render json: @current_wallet
     # byebug # params
   end
 
