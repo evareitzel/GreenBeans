@@ -3,9 +3,8 @@ import Card from "../components/Card"
 
 function Wallet({ walletKey, cryptos }) {
   const navigate = useNavigate()
-  const renderCryptos = cryptos.map(crypto => <Card crypto={crypto} />)
+  const renderCryptos = cryptos.map(crypto => <Card crypto={crypto} key={crypto.id} />)
 
-  console.log(cryptos)
   return (
     <div>
       <h2>My Cryptos</h2>

@@ -7,10 +7,9 @@ import Cryptos from "../pages/Cryptos"
 
 function App() {
   const [walletKey, setWalletKey] = useState(null)
-  const [walletCryptos, setWalletCryptos] = useState([])
   const [wallet, setWallet] = useState(null)
-
   const [cryptos, setCryptos] = useState([])
+  const [walletCryptos, setWalletCryptos] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -25,20 +24,18 @@ function App() {
     fetch('/wallet')
       .then(r => r.json())
       .then(wallet => setWallet(wallet))
-      // .then(wallet => setWalletCryptos(wallet.walletcryptos))
-    }, [])
+  }, [])
 
     useEffect(() => {
       fetch('/wallet')
         .then(r => r.json())
         .then(wallet => setCryptos(wallet.cryptos))
-        // .then(wallet => setWalletCryptos(wallet.walletcryptos)) // wallet.cryptos
     }, [])
   
   useEffect(() => {
     fetch('/wallet')
       .then(r => r.json())
-      .then(wallet => setWalletCryptos(wallet.walletcryptos)) // wallet.cryptos
+      .then(wallet => setWalletCryptos(wallet.walletcryptos))
   }, [])
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
