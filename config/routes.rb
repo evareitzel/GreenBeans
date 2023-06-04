@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/wallet', to: 'wallets#show'
   resources :cryptos, only: [:index]
-  resources :walletcryptos, only: [:create, :update] # READ, DESTROY
+  resources :walletcryptos, only: [:create, :update, :destroy] # READ
 
   
   # Routing logic: fallback requests for React Router.

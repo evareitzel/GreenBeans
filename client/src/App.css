@@ -52,14 +52,14 @@
   letter-spacing: 1px;
 }
 
-.quantity-button {
+.small-button {
   border-radius: 50px;
   background-color: #fff;
   color: #388E3C;
   border: 0px;
   border: 1px solid #388E3C;
-
-  padding: 2px 8px;
+  padding: 4px 16px;
+  margin: 0 0 20px 0;
   font-size: calc(4px + 2vmin);
   letter-spacing: 1px;
 }
@@ -85,7 +85,7 @@
 }
 
 .list {
-  padding: 0;
+  line-height: 1.5;
   list-style-type: none;
 }
 

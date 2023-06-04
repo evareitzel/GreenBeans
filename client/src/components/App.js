@@ -33,8 +33,14 @@ function App() {
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
-  function handleAddCrypto(walletcrypto) {
+  function handleAddWalletcrypto(walletcrypto) {
     setWalletcryptos([walletcrypto, ...walletcryptos]) // .sort() alphabetically by name
+  }
+
+  function handleDeleteWalletcrypto(walletcrypto) {
+        console.log('Delete click from App.js!')
+        // setWalletcryptos()
+
   }
 
   return (
@@ -54,7 +60,8 @@ function App() {
             path='/cryptos' 
             element={<Cryptos
               wallet={wallet}
-              onAddCrypto={handleAddCrypto}
+              onAddWalletcrypto={handleAddWalletcrypto}
+              onDeleteWalletcrypto={handleDeleteWalletcrypto}
             />} 
           />
         </Routes>

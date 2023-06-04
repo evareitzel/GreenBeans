@@ -1,7 +1,7 @@
 class WalletcryptosController < ApplicationController
   skip_before_action :authorize, only: :create # DEV tool for Postman
 
-  # POST /walletcryptos
+  # POST '/walletcryptos'
   def create
     # byebug
     walletcrypto = Walletcrypto.create!(walletcrypto_params) # not rendering errors  
@@ -13,6 +13,13 @@ class WalletcryptosController < ApplicationController
     walletcrypto = find_walletcrypto
     walletcrypto.update!(walletcrypto_params)
     render json: walletcrypto
+  end
+
+  # DELETE '/walletcryptos/:id'
+  def destroy
+    walletcrypto = find_walletcrypto
+    walletcrypto.destroy
+    head :no_content
   end
 
   private

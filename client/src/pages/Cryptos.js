@@ -1,12 +1,10 @@
 import {useEffect, useState} from "react"
 
-function Cryptos({wallet, onAddCrypto}) {
+function Cryptos({wallet, onAddWalletcrypto}) {
   const [cryptos, setCryptos] = useState([])
   const [quantity, setQuantity] = useState('1')
   const [cryptoId, setCryptoId] = useState()
-  const [total, setTotal] = useState(quantity * crypto.price) // not wkg
   const [errors, setErrors] = useState([])
-
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -15,10 +13,9 @@ function Cryptos({wallet, onAddCrypto}) {
   }, [])
 
   const renderCryptos = cryptos.map(crypto => (
-    <li key={crypto.id}>{crypto.symbol} | {crypto.name} ${crypto.price}</li>
+    <li key={crypto.id}><strong>{crypto.symbol}</strong> | {crypto.name} ${crypto.price}</li>
   )) 
 
-  // Extract into new component?
   const renderSymbols = cryptos.map(crypto => (
     <option 
       key={crypto.id}
@@ -39,14 +36,12 @@ function Cryptos({wallet, onAddCrypto}) {
       body: JSON.stringify({
         wallet_id: wallet.id,
         crypto_id: cryptoId,
-        quantity,
-        total // broken
+        quantity
       }),
     })
     .then(r => {
       if(r.ok) {
-        r.json().then(walletcrypto => setTotal(walletcrypto.quantity * crypto.price)) // FIX (still null)
-        .then(walletcrypto => onAddCrypto(walletcrypto))
+        r.json().then(walletcrypto => onAddWalletcrypto(walletcrypto))
       } else {
         r.json().then(err => setErrors(err.errors))
       }
@@ -55,10 +50,10 @@ function Cryptos({wallet, onAddCrypto}) {
 
   return (
     <>
-    <form onSubmit={handleFormSubmit} className='form'>
       <ul className='list'>
         {renderCryptos}
       </ul>
+    <form onSubmit={handleFormSubmit} className='form'>
       <h2>Add to Wallet</h2>
       <div className='form-field'>
         <label>Crypto </label>

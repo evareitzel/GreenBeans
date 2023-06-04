@@ -1,14 +1,40 @@
 // import { useState } from "react"
 
-function Card ({walletcrypto}){
-  const {crypto} = walletcrypto
+function Card ({walletcrypto, onDeleteWalletcrypto}){
+  const {crypto, id} = walletcrypto
+  // const [errors, setErrors] = useState([])
+
+
+  function handleDeleteClick(){
+    window.alert(`${crypto.name} removed from wallet!`)
+
+    fetch(`/walletcryptos/${id}`, {
+      method: 'DELETE',
+    })
+    // onDeleteWalletcrypto(walletcrypto)
+  }
+
+  return(
+    <li key={crypto.id} className="card">
+      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p> {/* ////ERROR//// TypeError: Cannot read properties of undefined (reading 'symbol') */}
+      <h2>{crypto.name}</h2>
+      <p>Quantity: {walletcrypto.quantity}</p>
+      <p className='total'>$ {walletcrypto.quantity * crypto.price}</p>
+      {/* FIX to show 2 decimal points */}
+
+      <button onClick={handleDeleteClick} className='small-button'>Remove</button>
+    </li>
+  )
+}
+
+export default Card
+
 
   // console.log(crypto)
   // console.log(walletcrypto)
 
   // const [quantity, setQuantity] = useState(crypto.walletcryptos[0].quantity)
-  // const [total, setTotal] = useState(quantity * crypto.price) // FIX so pulling info from walletcryptos DB
-  // const [errors, setErrors] = useState([])
+
 
 
   // function handleSubmit(e) {
@@ -38,52 +64,25 @@ function Card ({walletcrypto}){
   //   })
   // }
 
-  return(
-    <li key={crypto.id} className="card">
-      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p> {/* ////ERROR//// TypeError: Cannot read properties of undefined (reading 'symbol') */}
-      <h2>{crypto.name}</h2>
 
-      <p>Quantity: {walletcrypto.quantity}</p>
-      <p className='total'>$ {walletcrypto.quantity * crypto.price}</p>
-      {/* FIX to show 2 decimal points */}
-
-      
-      {/* <form onSubmit={handleSubmit} > 
-        <div className='form-field'>
-          <label>Quantity
-            <input 
-              className="quantity-input"
-              type='text'
-              id='quantity'
-              value={quantity}
-              autoComplete='off'
-              onChange={e => setQuantity(e.target.value)}
-            />
-          </label>
-          <button type='submit' className='quantity-button'>Update</button>
-        </div>
-        {errors.map(err => (
-          <div key={err} className='error'>🗙 {err}</div>
-        ))}
-      </form>
-
-       */}
-    </li>
-  )
-}
-
-export default Card
-
-
-
-
-
-
-
-
-
-
-
+  //   <form onSubmit={handleSubmit} > 
+  //   <div className='form-field'>
+  //     <label>Quantity
+  //       <input 
+  //         className="quantity-input"
+  //         type='text'
+  //         id='quantity'
+  //         value={quantity}
+  //         autoComplete='off'
+  //         onChange={e => setQuantity(e.target.value)}
+  //       />
+  //     </label>
+  //     <button type='submit' className='quantity-button'>Update</button>
+  //   </div>
+  //   {errors.map(err => (
+  //     <div key={err} className='error'>🗙 {err}</div>
+  //   ))}
+  // </form>
 
 
 
