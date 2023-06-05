@@ -25,7 +25,7 @@ class WalletcryptosController < ApplicationController
   private
 
   def walletcrypto_params
-    params.permit(:wallet_id, :crypto_id, :quantity)
+    params.permit(:wallet_id, :crypto_id, :quantity, :total)
   end
 
   def find_walletcrypto

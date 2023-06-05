@@ -13,7 +13,13 @@ function Cryptos({wallet, onAddWalletcrypto}) {
   }, [])
 
   const renderCryptos = cryptos.map(crypto => (
-    <li key={crypto.id}><strong>{crypto.symbol}</strong> | {crypto.name} ${crypto.price}</li>
+    <li key={crypto.id}>
+      <strong>{crypto.symbol}</strong> | {crypto.name} ${crypto.price} 
+      <br />
+      💸 Popularity: <strong>{crypto.wallets.length}</strong>
+      <br />
+      <br />
+    </li>
   )) 
 
   const renderSymbols = cryptos.map(crypto => (
@@ -42,6 +48,7 @@ function Cryptos({wallet, onAddWalletcrypto}) {
     .then(r => {
       if(r.ok) {
         r.json().then(walletcrypto => onAddWalletcrypto(walletcrypto))
+        .then(walletcrypto => window.alert(`Added to wallet!`))
       } else {
         r.json().then(err => setErrors(err.errors))
       }
@@ -71,7 +78,7 @@ function Cryptos({wallet, onAddWalletcrypto}) {
           type='text'
           id='quantity'
           value={quantity}
-          autocomplete='off'
+          autoComplete='off'
           onChange={e => setQuantity(e.target.value)}
         />
         </div>
