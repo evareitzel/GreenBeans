@@ -14,7 +14,6 @@ class WalletsController < ApplicationController
     render json: @current_wallet
     # byebug # params
   end
-
   
   private
 

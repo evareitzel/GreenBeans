@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/wallet', to: 'wallets#show'
-  resources :cryptos, only: [:index]
+  resources :cryptos, only: [:index, :create]
   resources :walletcryptos, only: [:create, :update, :destroy] # READ
 
   

@@ -461,3 +461,42 @@
 
 
   
+
+  # from Card.js - + / - buttons
+
+#   onRemoveCrypto
+#         <input
+#           className="form-input"
+#           type='text'
+#           autoComplete='off'
+#           onChange={e => setWalletKey(e.target.value)}
+#         />
+
+#   function onIncrementClick(crypto){
+#     setCryptoQuantity(crypto.quantity += 1)
+#     onIncrementCrypto(crypto, cryptoQuantity)
+#   }
+
+#   const [cryptoQuantity, setCryptoQuantity] = useState(1)
+
+# <button className='incrementer' onClick={() => onIncrementClick(crypto)}>+</button> 
+# <button className='decrementer'>-</button>
+# onClick={onDecrementCryptos}
+
+# ////////////////
+
+
+
+
+# from Crypto.js
+
+# 💸💰💲💵🪙👛⭐
+
+
+
+
+
+
+# replacing w record.errors (Flatiron syntax)
+
+# r.json().then(err => setErrors(err.errors)) # LoginForm.js

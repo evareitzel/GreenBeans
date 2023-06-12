@@ -8,7 +8,16 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
-  const [walletcryptos, setWalletcryptos] = useState([])
+  // const [walletcryptos, setWalletcryptos] = useState([])
+
+  // const [cryptos, setCryptos] = useState([])
+
+  // useEffect(() =>{
+  //   fetch('/cryptos')
+  //   .then(r => r.json())
+  //   .then(cryptos => setCryptos(cryptos))
+  // }, [])
+
 
   useEffect(() => {
     // auto-login
@@ -24,25 +33,26 @@ function App() {
       .then(r => r.json())
       .then(wallet => setWallet(wallet))
   }, [])
-  
-  useEffect(() => {
-    fetch('/wallet')
-      .then(r => r.json())
-      .then(wallet => setWalletcryptos(wallet.walletcryptos))
-  }, [])
+  console.log(wallet) //
+
+  // useEffect(() => {
+  //   fetch('/wallet')
+  //     .then(r => r.json())
+  //     .then(wallet => setWalletcryptos(wallet.walletcryptos))
+  // }, [])
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
 
-  function handleAddWalletcrypto(walletcrypto) {
-    setWalletcryptos([walletcrypto, ...walletcryptos]) // .sort() alphabetically by name
-  }
+  // function handleAddWalletcrypto(walletcrypto) {
+  //   setWalletcryptos([walletcrypto, ...walletcryptos]) // .sort() alphabetically by name
+  // }
 
-  function handleDeleteWalletcrypto(deleted) {
-    const filtered = walletcryptos.filter(walletcrypto => {
-      return walletcrypto.id !== deleted.id   
-    })
-    setWalletcryptos(filtered)
-  }
+  // function handleDeleteWalletcrypto(deleted) {
+  //   const filtered = walletcryptos.filter(walletcrypto => {
+  //     return walletcrypto.id !== deleted.id   
+  //   })
+  //   setWalletcryptos(filtered)
+  // }
 
   return (
     <main className='wrapper'>
@@ -54,15 +64,16 @@ function App() {
             element={<Wallet
               walletKey={walletKey}
               wallet={wallet}
-              walletcryptos={walletcryptos}
-              onDeleteWalletcrypto={handleDeleteWalletcrypto}
+              // cryptos={cryptos}
+              // walletcryptos={walletcryptos}
+              // onAddWalletcrypto={handleAddWalletcrypto}
+              // onDeleteWalletcrypto={handleDeleteWalletcrypto}
             />}
           />
           <Route 
             path='/cryptos' 
             element={<Cryptos
               wallet={wallet}
-              onAddWalletcrypto={handleAddWalletcrypto}
             />} 
           />
         </Routes>

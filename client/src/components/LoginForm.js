@@ -15,11 +15,11 @@ function LoginForm({ onLogin }) {
       body: JSON.stringify({ 
         "wallet_key": walletKey, 
         password }),
-    }).then(r => { 
+    }).then(r => {
       if (r.ok) {
         r.json().then(walletKey => onLogin(walletKey))
       } else {
-        r.json().then(err => setErrors(err.errors))
+        r.json().then(record => setErrors(record.errors))
       }
     })
   }
@@ -50,13 +50,13 @@ function LoginForm({ onLogin }) {
           />
         </label>
       </div>
-      <div className='button-wrapper'>
+      <div className='button-wrapper'> 
+      {/* TypeError: Cannot read properties of undefined (reading 'map') */}
         <button type='submit' className='button'>Log In</button> 
       </div>
       {errors.map(err => (
         <div key={err} className='error'>🗙 {err}</div>
       ))}
-
     </form>
   )
 }

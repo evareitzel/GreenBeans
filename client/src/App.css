@@ -16,6 +16,8 @@
   list-style: none;
   min-height: 10vh;
   font-size: calc(10px + 2vmin);
+  /* padding: 40px; */
+  width: 490px;
 }
 
 .nav-link {
@@ -87,6 +89,10 @@
 .list {
   line-height: 1.5;
   list-style-type: none;
+}
+
+.list-item {
+  padding: 8px 0;
 }
 
 .card {

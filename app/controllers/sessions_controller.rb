@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
     wallet = Wallet.find_by(wallet_key: params[:wallet_key])
     # byebug
     if wallet&.authenticate(params[:password])
-    #### CANNOT LOG IN WHEN .authenticate is called
-      session[:wallet_key] = wallet.wallet_key # 2/2 - get wristband # WKG?
+      session[:wallet_key] = wallet.wallet_key # get wristband
       render json: wallet
     else
       render json: { errors: ['Invalid wallet key or password'] }, status: :unauthorized
