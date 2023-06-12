@@ -1,15 +1,10 @@
 import {useState, useEffect} from "react"
 
 function AddWalletcryptoForm({wallet, onAddWalletcrypto}) { 
-  // cryptos,
-  console.log(wallet)
-  // console.log(cryptos)
-
-  const [errors, setErrors] = useState([])
-  const [quantity, setQuantity] = useState('1')
-  const [total, setTotal] = useState(0)
-  const [option, setOption] = useState()
   const [cryptos, setCryptos] = useState([])
+  const [errors, setErrors] = useState([])
+  const [quantity, setQuantity] = useState('100')
+  const [option, setOption] = useState('1')
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -17,18 +12,22 @@ function AddWalletcryptoForm({wallet, onAddWalletcrypto}) {
     .then(cryptos => setCryptos(cryptos))
   }, []) // duplicated in Cryptos - move state up
 
-  const renderOptions = cryptos.map(crypto => (
-    <option 
-      key={crypto.id}
-      id='crypto_id'
-      value={crypto.id} 
-    >{crypto.symbol} • ${crypto.price}</option>
-  ))
+  const renderOptions = cryptos.map(crypto => {
+    return(
+      <option 
+        key={crypto.id}
+        id='crypto_id'
+        value={crypto.id}
+      >
+        {crypto.symbol} • ${crypto.price}
+      </option>
+    )
+  })
 
   function handleFormSubmit(e) {
     e.preventDefault()
     setErrors([])
-    setTotal(quantity * crypto.price)
+    // setTotal
 
     fetch('/walletcryptos', {
       method: 'POST',
@@ -38,23 +37,26 @@ function AddWalletcryptoForm({wallet, onAddWalletcrypto}) {
       body: JSON.stringify({
         wallet_id: wallet.id,
         crypto_id: option,
-        quantity,
-        total // FIX
+        quantity
       }),
     })
     .then(r => {
       if(r.ok) {
-        r.json().then(walletcrypto => onAddWalletcrypto(walletcrypto))
-        // .then(walletcrypto => window.alert(`Added to wallet!`))
-        .then(window.alert(`Added to wallet!`))
+        // r.json().then(r => console.log(r))
+        r.json()
+        .then(walletcrypto => {
+          // console.log(walletcrypto)
+          onAddWalletcrypto(walletcrypto)
+        })
+        setQuantity('100')
       } else {
-        r.json().then(err => setErrors(err.errors))
+        r.json().then(record => setErrors(record.errors))
       }
     })
   }
 
   return(
-    <form onSubmit={handleFormSubmit} className='form'>
+    <form onSubmit={handleFormSubmit} className='form'> 
     <h2>Add to Wallet</h2>
     <div className='form-field'>
       <label>Crypto</label>
@@ -86,13 +88,3 @@ function AddWalletcryptoForm({wallet, onAddWalletcrypto}) {
 }
 
 export default AddWalletcryptoForm
-
-
-
-  // .then(walletcrypto => setPopularity(walletcrypto.wallets))
-  // .then(walletcrypto => setPopularity(walletcrypto.wallets))
-
-  // find crypto with updated wallet
-  // then refresh state based on crypto.wallets (complex mapping w has-many-thru relationship)
-
-  // setPopularity(crypto.wallets.map(w => popularity + "⭐").join('')))

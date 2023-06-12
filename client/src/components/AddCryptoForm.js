@@ -4,11 +4,12 @@ function AddCryptoForm({onAddCrypto}) {
   const [symbol, setSymbol] = useState('')
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
+  const [errors, setErrors] = useState([])
 
   function handleFormSubmit(e) {
     e.preventDefault()
-    console.log('AddCryptoForm submitted!')
-
+    // console.log('AddCryptoForm submitted!')
+    setErrors([])
     // document.querySelector(symbol).value = ''
     // symbol.value = ''
     // name.value = ''
@@ -25,10 +26,16 @@ function AddCryptoForm({onAddCrypto}) {
         price
       }),
     })
-    .then(r => r.json())
-    .then(r => console.log(r))
-    // .then(crypto => onAddCrypto(crypto))
+
+    .then(r => {
+      if (r.ok) {
+        // r.json().then(r => console.log(r))
+        r.json().then(crypto => onAddCrypto(crypto))
     // update cryptos state w new crypto
+      } else {
+        r.json().then(record => setErrors(record.errors))
+      }
+    })    
   }
   // function handleFormSubmit(e) {
   //   e.preventDefault()
@@ -104,8 +111,10 @@ function AddCryptoForm({onAddCrypto}) {
 
       <button type='submit' className='ghost-button'>Import new crypto</button>
       {/* render errors */}
+      {errors.map(err => (
+        <div key={err} className='error'>🗙 {err}</div>
+      ))}
     </form>
-
   )
 }
 

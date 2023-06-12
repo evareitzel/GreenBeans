@@ -4,28 +4,27 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
   const {crypto, id} = walletcrypto
   const [errors, setErrors] = useState([])
   const [quantity, setQuantity] = useState(walletcrypto.quantity)
-  const [total, setTotal] = useState(quantity * crypto.price)
-  // const [total, setTotal] = useState(crypto.price)
+  const [total, setTotal] = useState(walletcrypto.quantity * walletcrypto.crypto.price)
 
-  console.log(crypto.price)
+  // console.log(total) // should be walletcrypto.total
+  // console.log(crypto.price)
 
-  console.log(walletcrypto.total)
   function handleSubmit(e){
     e.preventDefault()
     setErrors([])
-    const total_amt = quantity * crypto.price
     fetch(`/walletcryptos/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        quantity,
-        total: total_amt// quantity * crypto.price
+        quantity
       }),
     }).then(r => {
       if(r.ok) {
-        r.json().then(walletcrypto => setTotal(walletcrypto.total))
+        r.json()
+        // .then(r => console.log(r))
+        .then(r => setTotal(r.quantity * r.crypto.price))
       } else {
         r.json().then(err => 
         setErrors(err.errors))
@@ -44,18 +43,18 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
     <li key={crypto.id} className="card">
       <p><strong>{crypto.symbol}</strong> ${crypto.price}</p> {/* ////ERROR//// TypeError: Cannot read properties of undefined (reading 'symbol') */}
       <h2>{crypto.name}</h2>
-      <p className='total'>${walletcrypto.total}</p>
+      <p className='total'>${total}</p>
       {/* FIX to show 2 decimal points */}
       <form onSubmit={handleSubmit}>
         <div className='form-field'>
           <label>Quantity
           <input
-            className="quantity-input"
+            // id='quantity'
+            // autoComplete='off'
             value={quantity}
-            // type='text'
-            id='quantity'
-            autoComplete='off'
             onChange={e => setQuantity(e.target.value)}
+            type='text'
+            className="quantity-input"
           />
           </label>
           <button type='submit' className='quantity-button'>Update</button>

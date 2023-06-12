@@ -500,3 +500,43 @@
 # replacing w record.errors (Flatiron syntax)
 
 # r.json().then(err => setErrors(err.errors)) # LoginForm.js
+
+
+
+# from Cryptos.js
+# {/* {popularity.map(w => popularity2 + "⭐").join('')} */}
+
+# // const [popularity, setPopularity] = useState([])
+
+
+# .then(walletcrypto => setPopularity(walletcrypto.wallets))
+# .then(walletcrypto => setPopularity(walletcrypto.wallets))
+
+# find crypto with updated wallet
+# then refresh state based on crypto.wallets (complex mapping w has-many-thru relationship)
+
+# setPopularity(crypto.wallets.map(w => popularity + "⭐").join('')))
+
+
+#  from Wallet.js
+# import { useNavigate } from "react-router-dom"
+
+# <button onClick={()=>{navigate('/cryptos')}} className='button'>Add cryptos</button>
+
+
+
+
+
+# from walletcrypto_serializer
+  # has_one :crypto
+
+  #  validations:  uniqueness :crypto_id within Wallet scope
+
+  # validates :crypto_id, uniqueness: { scope: :wallet} # check
+
+
+
+
+  # AddWalletcryptoForm.js
+  # .then(window.alert(`Added to wallet!`))
+

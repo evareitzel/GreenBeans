@@ -51,7 +51,6 @@ function LoginForm({ onLogin }) {
         </label>
       </div>
       <div className='button-wrapper'> 
-      {/* TypeError: Cannot read properties of undefined (reading 'map') */}
         <button type='submit' className='button'>Log In</button> 
       </div>
       {errors.map(err => (

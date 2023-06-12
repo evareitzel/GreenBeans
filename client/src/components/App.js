@@ -33,26 +33,8 @@ function App() {
       .then(r => r.json())
       .then(wallet => setWallet(wallet))
   }, [])
-  console.log(wallet) //
-
-  // useEffect(() => {
-  //   fetch('/wallet')
-  //     .then(r => r.json())
-  //     .then(wallet => setWalletcryptos(wallet.walletcryptos))
-  // }, [])
 
   if (!walletKey) return <Login onLogin={setWalletKey} />
-
-  // function handleAddWalletcrypto(walletcrypto) {
-  //   setWalletcryptos([walletcrypto, ...walletcryptos]) // .sort() alphabetically by name
-  // }
-
-  // function handleDeleteWalletcrypto(deleted) {
-  //   const filtered = walletcryptos.filter(walletcrypto => {
-  //     return walletcrypto.id !== deleted.id   
-  //   })
-  //   setWalletcryptos(filtered)
-  // }
 
   return (
     <main className='wrapper'>
@@ -64,10 +46,6 @@ function App() {
             element={<Wallet
               walletKey={walletKey}
               wallet={wallet}
-              // cryptos={cryptos}
-              // walletcryptos={walletcryptos}
-              // onAddWalletcrypto={handleAddWalletcrypto}
-              // onDeleteWalletcrypto={handleDeleteWalletcrypto}
             />}
           />
           <Route 

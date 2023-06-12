@@ -1,11 +1,17 @@
 class WalletcryptosController < ApplicationController
   # skip_before_action :authorize, only: :create # DEV tool for Postman
 
+  # GET /walletcryptos
+  def index
+    walletcryptos = Walletcrypto.all
+    render json: walletcryptos
+  end
+
   # POST /walletcryptos
   def create
     # byebug
     walletcrypto = Walletcrypto.create!(walletcrypto_params) # not rendering errors  
-    render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity, :total]), status: :created
+    render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity], include: :crypto), status: :created
   end
 
   # PATCH /walletcryptos/:id
@@ -25,7 +31,7 @@ class WalletcryptosController < ApplicationController
   private
 
   def walletcrypto_params
-    params.permit(:wallet_id, :crypto_id, :quantity, :total)
+    params.permit(:wallet_id, :crypto_id, :quantity)
   end
 
   def find_walletcrypto
