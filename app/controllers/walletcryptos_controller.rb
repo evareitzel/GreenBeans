@@ -10,7 +10,7 @@ class WalletcryptosController < ApplicationController
   # POST /walletcryptos
   def create
     # byebug
-    walletcrypto = Walletcrypto.create!(walletcrypto_params) # not rendering errors  
+    walletcrypto = Walletcrypto.create!(walletcrypto_params)
     render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity], include: :crypto), status: :created
   end
 
