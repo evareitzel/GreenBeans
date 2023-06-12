@@ -10,14 +10,11 @@ function Wallet({walletKey, wallet}) {
       .then(r => r.json())
       .then(wallet => setWalletcryptos(wallet.walletcryptos))
   }, [])
-
-  // why can't i get walletcryptos collection from wallet? // OR AM I?
-  // const navigate = useNavigate()
   
   const renderCards = walletcryptos.map(walletcrypto => <Card walletcrypto={walletcrypto} onDeleteWalletcrypto={handleDeleteWalletcrypto} key={walletcrypto.id} />)
 
   function handleAddWalletcrypto(walletcrypto) {
-    setWalletcryptos([...walletcryptos, walletcrypto]) // .sort() alphabetically by name
+    setWalletcryptos([...walletcryptos, walletcrypto])
   }
 
   function handleDeleteWalletcrypto(deleted) {
@@ -38,7 +35,6 @@ function Wallet({walletKey, wallet}) {
         : <ul className="list">{renderCards}</ul>
       }
       <AddWalletcryptoForm wallet={wallet} onAddWalletcrypto={handleAddWalletcrypto} />
-      {/* cryptos={cryptos} */}
     </>
   )
 }

@@ -22,7 +22,7 @@ function CreateAccountForm({ onLogin }) {
       if(r.ok) {
         r.json().then(walletKey => onLogin(walletKey))
       } else {
-        r.json().then(err => setErrors(err.errors))
+        r.json().then(record => setErrors(record.errors))
       }
     })
   }
@@ -31,31 +31,29 @@ function CreateAccountForm({ onLogin }) {
     <form onSubmit={handleSubmit} className='form'>
       <div className='form-field'>
         <label>Wallet Key 
-          <input 
-            className="form-input"
-            type='text'
-            id='wallet_key'
-            autoComplete='off'
+          <input
             value={walletKey}
             onChange={e => setWalletKey(e.target.value)}
+            type='text'
+            autoComplete='off'
+            className="form-input"
           />
         </label> 
       </div>
       <div className='form-field'>
         <label>Password 
           <input
-            className="form-input"
-            type='password'
-            id='password'
             value={password}
             onChange={e => setPassword(e.target.value)}
-            autoComplete='current-password'
+            type='password'
+            className="form-input"
           />
         </label>
       </div>
       <div className='button-wrapper'>
         <button type='submit' className='button'>Create Account</button> 
       </div>
+
       {errors.map(err => (
         <div key={err} className='error'>🗙 {err}</div>
       ))}

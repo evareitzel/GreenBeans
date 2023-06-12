@@ -6,9 +6,6 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
   const [quantity, setQuantity] = useState(walletcrypto.quantity)
   const [total, setTotal] = useState(walletcrypto.quantity * walletcrypto.crypto.price)
 
-  // console.log(total) // should be walletcrypto.total
-  // console.log(crypto.price)
-
   function handleSubmit(e){
     e.preventDefault()
     setErrors([])
@@ -22,9 +19,7 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
       }),
     }).then(r => {
       if(r.ok) {
-        r.json()
-        // .then(r => console.log(r))
-        .then(r => setTotal(r.quantity * r.crypto.price))
+        r.json().then(r => setTotal(r.quantity * r.crypto.price))
       } else {
         r.json().then(err => 
         setErrors(err.errors))
@@ -41,30 +36,28 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
 
   return(
     <li key={crypto.id} className="card">
-      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p> {/* ////ERROR//// TypeError: Cannot read properties of undefined (reading 'symbol') */}
+      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p>
       <h2>{crypto.name}</h2>
-      <p className='total'>${total}</p>
-      {/* FIX to show 2 decimal points */}
+      <p className='total'>${((total * 100) / 100).toFixed(2)}</p>
+
       <form onSubmit={handleSubmit}>
         <div className='form-field'>
           <label>Quantity
           <input
-            // id='quantity'
-            // autoComplete='off'
             value={quantity}
             onChange={e => setQuantity(e.target.value)}
             type='text'
             className="quantity-input"
           />
           </label>
-          <button type='submit' className='quantity-button'>Update</button>
+          <button type='submit' className='update-button'>Update</button>
         </div>
+        
+        {errors.map(err => (
+          <div key={err} className='error'>🗙 {err}</div>
+        ))}
       </form>
-      {errors.map(err => (
-        <div key={err} className='error'>🗙 {err}</div>
-      ))}
-
-
+      
       <button onClick={handleDeleteClick} className='small-button'>Remove</button>
     </li>
   )

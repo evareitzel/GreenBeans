@@ -66,6 +66,18 @@
   letter-spacing: 1px;
 }
 
+.update-button {
+  border-radius: 50px;
+  padding: 4px 16px;
+  background-color: #388E3C;
+  color: #fff;
+  border: 2px solid #388E3C;
+  margin: 0 0 20px 0;
+  font-size: calc(8px + 2vmin);
+  letter-spacing: 1px;
+}
+
+
 .incrementer {
   border: 1px solid #388E3C;
   border-radius: 50%;
