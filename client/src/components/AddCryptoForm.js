@@ -25,13 +25,13 @@ function AddCryptoForm({onAddCrypto}) {
     .then(r => {
       if (r.ok) {
         r.json().then(crypto => onAddCrypto(crypto))
+        setSymbol('')
+        setName('')
+        setPrice('')
       } else {
         r.json().then(record => setErrors(record.errors))
       }
     })
-    setSymbol('')
-    setName('')
-    setPrice('')
   }
 
   return (
@@ -63,7 +63,7 @@ function AddCryptoForm({onAddCrypto}) {
           placeholder='Price'
         />
       </div>
-      <button type='submit' className='ghost-button'>Import new crypto</button>
+      <button type='submit' className='button'>Import new crypto</button>
       {errors.map(err => (
         <div key={err} className='error'>🗙 {err}</div>
       ))}

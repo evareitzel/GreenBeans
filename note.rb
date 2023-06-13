@@ -540,3 +540,50 @@
   # AddWalletcryptoForm.js
   # .then(window.alert(`Added to wallet!`))
 
+
+
+
+  # from App.js
+  # // FIX IN BACKEND!!!!!!!!!!!!
+  # function handleIncrementCrypto(crypto, cryptoQuantity) {
+  #   console.log(crypto)
+  #   fetch('/cryptos', {
+  #     method: 'PATCH',
+  #     headers: {
+  #       'Content-Type': 'application/json',
+  #     },
+  #     body: JSON.stringify({
+  #       'crypto_id': crypto.id,
+  #       'quantity': cryptoQuantity,
+  #     }),
+  #   })
+  #   .then(r => r.json())
+  #   .then(crypto => console.log(crypto))
+  # }
+
+  # onIncrementCrypto={handleIncrementCrypto}
+
+  #   {/* <Route path='*' element={<Wallet walletKey={walletKey} />} /> */}
+
+  #   function handleRemoveCrypto() {
+  #     console.log(`remove crypto!`)
+  #     // fetch('/wallet-crypto')
+  #     // method: 'DELETE'
+  #   }
+  
+  #   onRemoveCrypto={handleRemoveCrypto}
+
+
+
+
+
+# from App.js  
+# if (!walletKey) return <Login onLogin={setWalletKey} />
+
+# const handleLogin = (wallet) => setWalletKey(wallet.wallet_key) // alt function build 
+
+
+
+
+
+

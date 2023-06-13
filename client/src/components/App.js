@@ -8,16 +8,13 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
-  // const [walletcryptos, setWalletcryptos] = useState([])
+  const [cryptos, setCryptos] = useState([])
 
-  // const [cryptos, setCryptos] = useState([])
-
-  // useEffect(() =>{
-  //   fetch('/cryptos')
-  //   .then(r => r.json())
-  //   .then(cryptos => setCryptos(cryptos))
-  // }, [])
-
+  useEffect(() =>{
+    fetch('/cryptos')
+    .then(r => r.json())
+    .then(cryptos => setCryptos(cryptos))
+  }, [])
 
   useEffect(() => {
     // auto-login
@@ -34,7 +31,15 @@ function App() {
       .then(wallet => setWallet(wallet))
   }, [])
 
-  if (!walletKey) return <Login onLogin={setWalletKey} />
+  function handleLogin(wallet) {
+    setWalletKey(wallet.wallet_key)
+  }
+
+  function handleAddCrypto(crypto) {
+    setCryptos([...cryptos, crypto])
+  }
+
+  if (!walletKey) return <Login onLogin={handleLogin} />
 
   return (
     <main className='wrapper'>
@@ -46,12 +51,15 @@ function App() {
             element={<Wallet
               walletKey={walletKey}
               wallet={wallet}
+              cryptos={cryptos}
             />}
           />
           <Route 
             path='/cryptos' 
             element={<Cryptos
               wallet={wallet}
+              cryptos={cryptos}
+              onAddCrypto={handleAddCrypto}
             />} 
           />
         </Routes>
@@ -61,33 +69,3 @@ function App() {
 }
 
 export default App
-
-
-  // // FIX IN BACKEND!!!!!!!!!!!!
-  // function handleIncrementCrypto(crypto, cryptoQuantity) {
-  //   console.log(crypto)
-  //   // fetch('/cryptos', {
-  //   //   method: 'PATCH',
-  //   //   headers: {
-  //   //     'Content-Type': 'application/json',
-  //   //   },
-  //   //   body: JSON.stringify({
-  //   //     'crypto_id': crypto.id,
-  //   //     'quantity': cryptoQuantity,
-  //   //   }),
-  //   // })
-  //   //   .then(r => r.json())
-  //   //   .then(crypto => console.log(crypto))
-  // }
-
-  // onIncrementCrypto={handleIncrementCrypto}
-
-            // {/* <Route path='*' element={<Wallet walletKey={walletKey} />} /> */}
-
-            // function handleRemoveCrypto() {
-            //   console.log(`remove crypto!`)
-            //   // fetch('/wallet-crypto')
-            //   // method: 'DELETE'
-            // }
-          
-            // onRemoveCrypto={handleRemoveCrypto}

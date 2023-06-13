@@ -3,7 +3,7 @@ import '../App.css';
 import LoginForm from "../components/LoginForm";
 import CreateAccountForm from "../components/CreateAccountForm";
 
-function Login({ onLogin }) {
+function Login({onLogin}) {
   const [showLogin, setShowLogin] = useState(true)
 
   return (

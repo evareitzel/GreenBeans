@@ -1,16 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
-function AddWalletcryptoForm({wallet, onAddWalletcrypto}) {
-  const [cryptos, setCryptos] = useState([])
+function AddWalletcryptoForm({wallet, cryptos, onAddWalletcrypto}) {
   const [quantity, setQuantity] = useState('100')
   const [option, setOption] = useState('1')
   const [errors, setErrors] = useState([])
-
-  useEffect(() =>{
-    fetch('/cryptos')
-    .then(r => r.json())
-    .then(cryptos => setCryptos(cryptos))
-  }, []) // duplicated in Cryptos - move state up
 
   const renderOptions = cryptos.map(crypto => (
     <option value={crypto.id} key={crypto.id}>

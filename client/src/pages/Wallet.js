@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Card from "../components/Card"
 import AddWalletcryptoForm from "../components/AddWalletcryptoForm"
 
-function Wallet({walletKey, wallet}) {
+function Wallet({walletKey, wallet, cryptos}) {
   const [walletcryptos, setWalletcryptos] = useState([])
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Wallet({walletKey, wallet}) {
         </p>
         : <ul className="list">{renderCards}</ul>
       }
-      <AddWalletcryptoForm wallet={wallet} onAddWalletcrypto={handleAddWalletcrypto} />
+      <AddWalletcryptoForm wallet={wallet} onAddWalletcrypto={handleAddWalletcrypto}  cryptos={cryptos} />
     </>
   )
 }
