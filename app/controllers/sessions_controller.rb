@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   # POST /login
   def create
     wallet = Wallet.find_by(wallet_key: params[:wallet_key])
-    # byebug
     if wallet&.authenticate(params[:password])
       session[:wallet_key] = wallet.wallet_key # get wristband
       render json: wallet

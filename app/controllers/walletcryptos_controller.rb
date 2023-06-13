@@ -1,5 +1,4 @@
 class WalletcryptosController < ApplicationController
-  # skip_before_action :authorize, only: :create # DEV tool for Postman
 
   # GET /walletcryptos
   def index
@@ -9,7 +8,6 @@ class WalletcryptosController < ApplicationController
 
   # POST /walletcryptos
   def create
-    # byebug
     walletcrypto = Walletcrypto.create!(walletcrypto_params)
     render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity], include: :crypto), status: :created
   end
