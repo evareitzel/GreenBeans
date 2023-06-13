@@ -20,51 +20,42 @@ walletcryptos = Walletcrypto.create([
   {
     wallet_id: Wallet.first.id, 
     crypto_id: Crypto.first.id,  
-    quantity: 100,
-    total: Crypto.first.price * 100
+    quantity: 100
   }, 
   {
     wallet_id: Wallet.first.id, 
     crypto_id: Crypto.second.id,  
-    quantity: 100,
-    total: Crypto.second.price * 100
+    quantity: 100
   }, 
   {
     wallet_id: Wallet.second.id, 
     crypto_id: Crypto.first.id,  
-    quantity: 100,
-    total: Crypto.first.price * 100
+    quantity: 100
   }, 
   {
     wallet_id: Wallet.second.id, 
     crypto_id: Crypto.third.id,  
-    quantity: 100,
-    total: Crypto.third.price * 100
+    quantity: 100
   }, 
   {
     wallet_id: Wallet.second.id, 
     crypto_id: Crypto.fourth.id,  
-    quantity: 100,
-    total: Crypto.fourth.price * 100
+    quantity: 100
   }, 
   {
     wallet_id: Wallet.third.id,
     crypto_id: Crypto.fourth.id,  
-    quantity:100,
-    total: Crypto.fourth.price * 100
+    quantity:100
   },
   {
     wallet_id: Wallet.third.id, 
     crypto_id: Crypto.fifth.id,  
-    quantity: 100,
-    total: Crypto.fifth.price * 100
+    quantity: 100
   },  
   {
     wallet_id: Wallet.third.id,
     crypto_id: Crypto.last.id,
-    quantity: 100,
-    total: Crypto.last.price * 100
-  }
+    quantity: 100
 ])
 
 

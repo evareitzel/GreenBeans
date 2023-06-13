@@ -11,6 +11,7 @@ function Wallet({walletKey, wallet, cryptos}) {
       .then(wallet => setWalletcryptos(wallet.walletcryptos))
   }, [])
   
+  console.log(cryptos)
   const renderCards = walletcryptos.map(walletcrypto => <Card walletcrypto={walletcrypto} onDeleteWalletcrypto={handleDeleteWalletcrypto} key={walletcrypto.id} />)
 
   function handleAddWalletcrypto(walletcrypto) {

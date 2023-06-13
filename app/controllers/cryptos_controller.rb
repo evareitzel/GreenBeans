@@ -1,4 +1,5 @@
 class CryptosController < ApplicationController
+  skip_before_action :authorize, only: :index #fetch after login preferred
 
   # GET /cryptos
   def index

@@ -4,6 +4,10 @@ function AddWalletcryptoForm({wallet, cryptos, onAddWalletcrypto}) {
   const [quantity, setQuantity] = useState('100')
   const [option, setOption] = useState('1')
   const [errors, setErrors] = useState([])
+// console.log(cryptos.errors[0])
+
+  if (!cryptos) return <h1>Loading...</h1>;
+
 
   const renderOptions = cryptos.map(crypto => (
     <option value={crypto.id} key={crypto.id}>
@@ -35,7 +39,7 @@ function AddWalletcryptoForm({wallet, cryptos, onAddWalletcrypto}) {
     })
     setQuantity('100')
   }
-
+  
   return(
     <form onSubmit={handleFormSubmit} className='form'> 
     <h2>Add to Wallet</h2>

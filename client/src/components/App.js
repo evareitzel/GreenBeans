@@ -8,7 +8,7 @@ import Cryptos from "../pages/Cryptos"
 function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
-  const [cryptos, setCryptos] = useState([])
+  const [cryptos, setCryptos] = useState(null)
 
   useEffect(() =>{
     fetch('/cryptos')
@@ -23,7 +23,7 @@ function App() {
         r.json().then(wallet => setWalletKey(wallet.wallet_key))
       }
     })
-  }, [])
+  }, []) // walletKey
 
   useEffect(() => {
     fetch('/wallet')
@@ -33,7 +33,9 @@ function App() {
 
   function handleLogin(wallet) {
     setWalletKey(wallet.wallet_key)
+    // console.log(wallet)
   }
+// console.log(walletKey)
 
   function handleAddCrypto(crypto) {
     setCryptos([...cryptos, crypto])
