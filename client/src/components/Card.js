@@ -15,11 +15,13 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        quantity
+        quantity,
+        total: quantity * crypto.price
       }),
     }).then(r => {
       if(r.ok) {
-        r.json().then(r => setTotal(r.quantity * r.crypto.price))
+        r.json().then(walletcrypto => setTotal(walletcrypto.total)
+        )
       } else {
         r.json().then(err => 
         setErrors(err.errors))
@@ -36,8 +38,8 @@ function Card ({walletcrypto, onDeleteWalletcrypto}){
 
   return(
     <li key={crypto.id} className="card">
-      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p>
       <h2>{crypto.name}</h2>
+      <p><strong>{crypto.symbol}</strong> ${crypto.price}</p>
       <p className='total'>${((total * 100) / 100).toFixed(2)}</p>
 
       <form onSubmit={handleSubmit}>

@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2023_06_03_213028) do
     t.bigint "wallet_id", null: false
     t.bigint "crypto_id", null: false
     t.integer "quantity"
+    t.float "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["crypto_id"], name: "index_walletcryptos_on_crypto_id"

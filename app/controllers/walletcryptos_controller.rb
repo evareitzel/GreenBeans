@@ -9,7 +9,7 @@ class WalletcryptosController < ApplicationController
   # POST /walletcryptos
   def create
     walletcrypto = Walletcrypto.create!(walletcrypto_params)
-    render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity], include: :crypto), status: :created
+    render json: walletcrypto.to_json(only: [:id, :wallet_id, :crypto_id, :quantity, :total], include: :crypto), status: :created
   end
 
   # PATCH /walletcryptos/:id
@@ -29,7 +29,7 @@ class WalletcryptosController < ApplicationController
   private
 
   def walletcrypto_params
-    params.permit(:wallet_id, :crypto_id, :quantity)
+    params.permit(:wallet_id, :crypto_id, :quantity, :total)
   end
 
   def find_walletcrypto
