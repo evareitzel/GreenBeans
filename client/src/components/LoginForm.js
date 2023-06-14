@@ -1,10 +1,10 @@
 import { useState } from "react"
 
 function LoginForm({onLogin}) {
-  const [walletKey, setWalletKey] = useState('')
+  const [loginWalletKey, setLoginWalletKey] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
-
+console.log(loginWalletKey)
   function handleSubmit(e) {
     e.preventDefault()
     setErrors([])
@@ -14,12 +14,13 @@ function LoginForm({onLogin}) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-        "wallet_key": walletKey, 
+        "wallet_key": loginWalletKey, 
         password
       }),
     }).then(r => {
       if (r.ok) {
-        r.json().then(walletKey => onLogin(walletKey))
+        r.json()
+        .then(loginWalletKey => onLogin(loginWalletKey))
       } else {
         r.json().then(record => setErrors(record.errors))
       }
@@ -31,8 +32,8 @@ function LoginForm({onLogin}) {
       <div className='form-field'>
         <label>Wallet Key
         <input 
-          value={walletKey}
-          onChange={e => setWalletKey(e.target.value)}
+          value={loginWalletKey}
+          onChange={e => setLoginWalletKey(e.target.value)}
           type='text'
           className="form-input"
         />

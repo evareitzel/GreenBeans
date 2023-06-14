@@ -9,12 +9,7 @@ function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
   const [cryptos, setCryptos] = useState(null)
-
-  useEffect(() =>{
-    fetch('/cryptos')
-    .then(r => r.json())
-    .then(cryptos => setCryptos(cryptos))
-  }, [])
+  const [walletcryptos, setWalletcryptos] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -23,7 +18,7 @@ function App() {
         r.json().then(wallet => setWalletKey(wallet.wallet_key))
       }
     })
-  }, []) // walletKey
+  }, [])
 
   useEffect(() => {
     fetch('/wallet')
@@ -31,14 +26,37 @@ function App() {
       .then(wallet => setWallet(wallet))
   }, [])
 
+    useEffect(() =>{
+      fetch('/cryptos')
+      .then(r => r.json())
+      .then(cryptos => setCryptos(cryptos))
+    }, [wallet, walletcryptos])
+
+    useEffect(() => {
+      fetch('/wallet')
+        .then(r => r.json())
+        .then(wallet => setWalletcryptos(wallet.walletcryptos))
+    }, [])
+
+
   function handleLogin(wallet) {
     setWalletKey(wallet.wallet_key)
-    // console.log(wallet)
+    setWallet(wallet)
   }
-// console.log(walletKey)
 
   function handleAddCrypto(crypto) {
     setCryptos([...cryptos, crypto])
+  }
+
+  function handleAddWalletcrypto(walletcrypto) {
+    setWalletcryptos([...walletcryptos, walletcrypto])
+  }
+
+  function handleDeleteWalletcrypto(deleted) {
+    const filtered = walletcryptos.filter(walletcrypto => {
+      return walletcrypto.id !== deleted.id   
+    })
+    setWalletcryptos(filtered)
   }
 
   if (!walletKey) return <Login onLogin={handleLogin} />
@@ -54,11 +72,15 @@ function App() {
               walletKey={walletKey}
               wallet={wallet}
               cryptos={cryptos}
+              walletcryptos={walletcryptos}
+              onAddWalletcrypto={handleAddWalletcrypto}
+              onDeleteWalletcrypto={handleDeleteWalletcrypto}
             />}
           />
           <Route 
             path='/cryptos' 
             element={<Cryptos
+              walletKey={walletKey}
               wallet={wallet}
               cryptos={cryptos}
               onAddCrypto={handleAddCrypto}

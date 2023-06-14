@@ -1,29 +1,9 @@
-import { useState, useEffect } from "react"
 import Card from "../components/Card"
 import AddWalletcryptoForm from "../components/AddWalletcryptoForm"
 
-function Wallet({walletKey, wallet, cryptos}) {
-  const [walletcryptos, setWalletcryptos] = useState([])
+function Wallet({walletKey, wallet, cryptos, walletcryptos, onAddWalletcrypto, onDeleteWalletcrypto}) {
 
-  useEffect(() => {
-    fetch('/wallet')
-      .then(r => r.json())
-      .then(wallet => setWalletcryptos(wallet.walletcryptos))
-  }, [])
-  
-  console.log(cryptos)
-  const renderCards = walletcryptos.map(walletcrypto => <Card walletcrypto={walletcrypto} onDeleteWalletcrypto={handleDeleteWalletcrypto} key={walletcrypto.id} />)
-
-  function handleAddWalletcrypto(walletcrypto) {
-    setWalletcryptos([...walletcryptos, walletcrypto])
-  }
-
-  function handleDeleteWalletcrypto(deleted) {
-    const filtered = walletcryptos.filter(walletcrypto => {
-      return walletcrypto.id !== deleted.id   
-    })
-    setWalletcryptos(filtered)
-  }
+  const renderCards = walletcryptos.map(walletcrypto => <Card walletcrypto={walletcrypto} onDeleteWalletcrypto={onDeleteWalletcrypto} key={walletcrypto.id} />)
 
   return (
     <>
@@ -35,7 +15,10 @@ function Wallet({walletKey, wallet, cryptos}) {
         </p>
         : <ul className="list">{renderCards}</ul>
       }
-      <AddWalletcryptoForm wallet={wallet} onAddWalletcrypto={handleAddWalletcrypto}  cryptos={cryptos} />
+      <AddWalletcryptoForm 
+        wallet={wallet} 
+        cryptos={cryptos}
+        onAddWalletcrypto={onAddWalletcrypto} />  
     </>
   )
 }
