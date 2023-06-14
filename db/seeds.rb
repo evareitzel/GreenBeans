@@ -56,6 +56,7 @@ walletcryptos = Walletcrypto.create([
     wallet_id: Wallet.third.id,
     crypto_id: Crypto.last.id,
     quantity: 100
+  }
 ])
 
 

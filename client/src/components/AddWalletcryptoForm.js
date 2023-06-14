@@ -5,6 +5,8 @@ function AddWalletcryptoForm({wallet, cryptos, onAddWalletcrypto}) {
   const [option, setOption] = useState('1')
   const [errors, setErrors] = useState([])
 
+  if (!cryptos) return <h1>Loading...</h1>;
+
   const renderOptions = cryptos.map(crypto => (
     <option value={crypto.id} key={crypto.id}>
       {crypto.symbol} • ${crypto.price}

@@ -3,6 +3,8 @@ import AddWalletcryptoForm from "../components/AddWalletcryptoForm"
 
 function Wallet({walletKey, wallet, cryptos, walletcryptos, onAddWalletcrypto, onDeleteWalletcrypto}) {
 
+  if (!walletcryptos) return <h2>Loading...</h2>;
+
   const renderCards = walletcryptos.map(walletcrypto => <Card walletcrypto={walletcrypto} onDeleteWalletcrypto={onDeleteWalletcrypto} key={walletcrypto.id} />)
 
   return (

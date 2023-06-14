@@ -4,7 +4,7 @@ function LoginForm({onLogin}) {
   const [loginWalletKey, setLoginWalletKey] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
-console.log(loginWalletKey)
+
   function handleSubmit(e) {
     e.preventDefault()
     setErrors([])

@@ -9,7 +9,7 @@ function App() {
   const [walletKey, setWalletKey] = useState(null)
   const [wallet, setWallet] = useState(null)
   const [cryptos, setCryptos] = useState(null)
-  const [walletcryptos, setWalletcryptos] = useState([])
+  const [walletcryptos, setWalletcryptos] = useState(null)
 
   useEffect(() => {
     // auto-login
@@ -37,7 +37,6 @@ function App() {
         .then(r => r.json())
         .then(wallet => setWalletcryptos(wallet.walletcryptos))
     }, [])
-
 
   function handleLogin(wallet) {
     setWalletKey(wallet.wallet_key)
