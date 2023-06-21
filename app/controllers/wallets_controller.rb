@@ -1,5 +1,5 @@
 class WalletsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: [:create, :wallet_walletcryptos]
 
   # POST /create-account
   def create
@@ -12,7 +12,21 @@ class WalletsController < ApplicationController
   def show
     render json: @current_wallet
   end
-  
+
+  # live code challenge 6/20/2023
+  # GET "wallet_walletcryptos"
+  # def wallet_walletcryptos
+  #   # walletcryptos = wallet.all#.select { |w| w[:walletcryptos][:quantity] >= params[:n] }
+  #   wallets = Wallet.all
+  #   # wallets.where("walletcrypto.length > ?", params[:n])
+
+    # filtered = wallets.select { |w| w.walletcryptos.length >= params[:n].to_i }
+    # byebug
+
+  #   render json: filtered
+
+  # end
+
   private
 
   def wallet_params

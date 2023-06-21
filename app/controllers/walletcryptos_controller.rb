@@ -33,7 +33,7 @@ class WalletcryptosController < ApplicationController
   end
 
   def find_walletcrypto
-    Walletcrypto.find(params[:id])
+    @current_wallet.walletcryptos.find(params[:id]) # fix errors msg
   end
 
 end

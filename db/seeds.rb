@@ -1,3 +1,7 @@
+Wallet.destroy_all
+Crypto.destroy_all
+Walletcrypto.destroy_all
+
 puts "💰 Seeding Wallets..."
 wallets = Wallet.create([ 
   { wallet_key: 'A4BAD', password: '111' }, 
