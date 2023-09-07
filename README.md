@@ -2,7 +2,7 @@
 
 # How to Start App
   $ bundle install
-  $ npm install --prefix client
+  $ npm i --prefix client
 
   # run the Rails API on localhost:3000
   $ rails s 
@@ -19,7 +19,11 @@
 
   # to reseed
   $ rails db:seed:replant
+  # reseed from migrations
+  $ rails db:drop db:create db:migrate
 
+  # Troubleshooting
+  $ sudo service postgresql start
 
   # Design Elements
 

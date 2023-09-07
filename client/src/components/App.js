@@ -10,6 +10,7 @@ function App() {
   const [wallet, setWallet] = useState(null)
   const [cryptos, setCryptos] = useState(null)
   const [walletcryptos, setWalletcryptos] = useState(null)
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
     // auto-login
@@ -38,6 +39,10 @@ function App() {
         .then(wallet => setWalletcryptos(wallet.walletcryptos))
     }, [])
 
+    const handleDarkModeClick = () => {
+      setIsDarkMode(isDarkMode => !isDarkMode)
+    }
+
   function handleLogin(wallet) {
     setWalletKey(wallet.wallet_key)
     setWallet(wallet)
@@ -61,32 +66,35 @@ function App() {
   if (!walletKey) return <Login onLogin={handleLogin} />
 
   return (
-    <main className='wrapper'>
-      <Router>
-        <NavBar walletKey={walletKey} setWalletKey={setWalletKey} />
-        <Routes>
-          <Route
-            path='/'
-            element={<Wallet
-              walletKey={walletKey}
-              wallet={wallet}
-              cryptos={cryptos}
-              walletcryptos={walletcryptos}
-              onAddWalletcrypto={handleAddWalletcrypto}
-              onDeleteWalletcrypto={handleDeleteWalletcrypto}
-            />}
-          />
-          <Route 
-            path='/cryptos' 
-            element={<Cryptos
-              walletKey={walletKey}
-              wallet={wallet}
-              cryptos={cryptos}
-              onAddCrypto={handleAddCrypto}
-            />} 
-          />
-        </Routes>
-      </Router>
+    // <main className='wrapper'>
+    <main className={'wrapper '+ (isDarkMode ? "dark" : "light")}>
+      {/* <div className={"App "+ (isDarkMode ? "dark" : "light")}> */}
+        <Router>
+          <NavBar walletKey={walletKey} setWalletKey={setWalletKey} onDarkModeClick={handleDarkModeClick} isDarkMode={isDarkMode} />
+          <Routes>
+            <Route
+              path='/'
+              element={<Wallet
+                walletKey={walletKey}
+                wallet={wallet}
+                cryptos={cryptos}
+                walletcryptos={walletcryptos}
+                onAddWalletcrypto={handleAddWalletcrypto}
+                onDeleteWalletcrypto={handleDeleteWalletcrypto}
+              />}
+            />
+            <Route 
+              path='/cryptos' 
+              element={<Cryptos
+                walletKey={walletKey}
+                wallet={wallet}
+                cryptos={cryptos}
+                onAddCrypto={handleAddCrypto}
+              />} 
+            />
+          </Routes>
+        </Router>
+      {/* </div> */}
     </main>
   );
 }

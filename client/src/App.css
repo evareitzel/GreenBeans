@@ -1,7 +1,19 @@
 .wrapper {
-  margin: 40px auto;
+  /* margin: 40px auto; */
+  margin: auto;
   text-align: center;
   width: 500px;
+  padding: 50px; 
+}
+
+.wrapper.dark{
+  color: #fff;
+  background: #121212; 
+}
+
+.wrapper.light{
+  background: #fff;
+  color: #121212;
 }
 
 .logo {
